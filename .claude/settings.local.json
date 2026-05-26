@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(irm https://claude.ai/install.ps1 | iex)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\Downloads\" -Force | Sort-Object LastWriteTime -Descending | Select-Object -First 15 | Format-Table Name, LastWriteTime)",
+      "PowerShell(python --version 2>&1)",
+      "PowerShell(node --version 2>&1)",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
+    ]
+  }
+}
