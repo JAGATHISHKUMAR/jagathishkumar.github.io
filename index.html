@@ -32,6 +32,81 @@
     ::-webkit-scrollbar-track { background: var(--light); }
     ::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 3px; }
 
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+    @keyframes slideRight { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes floatBob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+    @keyframes gradShift { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
+    @keyframes particleDrift { 0% { transform:translateY(0) translateX(0) scale(1); opacity:0.6; } 50% { opacity:0.2; } 100% { transform:translateY(-120px) translateX(40px) scale(0.5); opacity:0; } }
+    @keyframes borderGlow { 0%,100% { box-shadow:0 0 0 0 rgba(99,102,241,0); } 50% { box-shadow:0 0 20px 4px rgba(99,102,241,0.25); } }
+    @keyframes spinRing  { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+    @keyframes tagPop    { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } }
+
+    /* Scroll-reveal base */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-left { opacity:0; transform:translateX(-30px); transition:opacity 0.65s ease, transform 0.65s ease; }
+    .reveal-left.visible { opacity:1; transform:translateX(0); }
+    .reveal-scale { opacity:0; transform:scale(0.9); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-scale.visible { opacity:1; transform:scale(1); }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay:0.1s !important; }
+    .delay-2 { transition-delay:0.2s !important; }
+    .delay-3 { transition-delay:0.3s !important; }
+    .delay-4 { transition-delay:0.4s !important; }
+    .delay-5 { transition-delay:0.5s !important; }
+
+    /* Hero text entrance */
+    .hero-tag    { animation: fadeUp 0.7s ease both 0.1s; }
+    #hero h1     { animation: fadeUp 0.7s ease both 0.25s; }
+    .hero-role   { animation: fadeUp 0.7s ease both 0.38s; }
+    .hero-summary{ animation: fadeUp 0.7s ease both 0.5s; }
+    .hero-stats  { animation: fadeUp 0.7s ease both 0.62s; }
+    .hero-cta    { animation: fadeUp 0.7s ease both 0.74s; }
+
+    /* Photo float */
+    .hero-photo-wrap { animation: floatBob 5s ease-in-out infinite; }
+
+    /* Animated gradient hero background */
+    #hero { background-size: 300% 300%; animation: gradShift 12s ease infinite; }
+
+    /* Particles canvas */
+    #particles { position:absolute; inset:0; pointer-events:none; z-index:0; }
+
+    /* Stat card shimmer on hover */
+    .stat-card { transition: transform 0.25s, box-shadow 0.25s; }
+    .stat-card:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 8px 28px rgba(99,102,241,0.35); }
+
+    /* Showcase cards */
+    .showcase-card { animation: borderGlow 3s ease-in-out infinite; }
+    .showcase-card.green { animation-delay:1s; }
+    .showcase-card.amber { animation-delay:2s; }
+
+    /* Timeline glow on hover */
+    .tl-card { transition: box-shadow 0.3s, transform 0.3s; }
+    .tl-card:hover { transform:translateX(4px); box-shadow:0 8px 28px rgba(99,102,241,0.15); }
+
+    /* Skill pill hover */
+    .pill { transition: transform 0.2s, box-shadow 0.2s; cursor:default; }
+    .pill:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(99,102,241,0.2); }
+
+    /* Product link pulse */
+    .product-link { position:relative; overflow:hidden; }
+    .product-link::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent); transform:translateX(-100%); transition:transform 0.4s; }
+    .product-link:hover::after { transform:translateX(100%); }
+
+    /* Cert card */
+    .cert-card { transition: transform 0.25s, box-shadow 0.25s; }
+    .cert-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(99,102,241,0.12); }
+
+    /* Contact card */
+    .contact-card { transition: all 0.25s; }
+
+    /* Section title underline animation */
+    .sec-bar { background:linear-gradient(90deg,var(--indigo),var(--violet),var(--blue)); background-size:200%; animation:gradShift 4s ease infinite; }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -287,6 +362,7 @@
   <div class="hero-bg-circles">
     <span></span><span></span><span></span>
   </div>
+  <canvas id="particles"></canvas>
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-tag">🟢 Open to Opportunities</div>
@@ -299,19 +375,19 @@
       </p>
       <div class="hero-stats">
         <div class="stat-card">
-          <div class="num">5</div>
+          <div class="num"><span class="stat-num" data-target="5">0</span></div>
           <div class="lbl">New SKUs Introduced</div>
         </div>
         <div class="stat-card">
-          <div class="num">₹3<span>Cr</span></div>
+          <div class="num">₹<span class="stat-num" data-target="3">0</span><span>Cr</span></div>
           <div class="lbl">Revenue Generated</div>
         </div>
         <div class="stat-card">
-          <div class="num">7.5<span>k</span></div>
+          <div class="num"><span class="stat-num" data-target="7.5">0</span><span>k</span></div>
           <div class="lbl">Users Acquired</div>
         </div>
         <div class="stat-card">
-          <div class="num">5<span>+</span></div>
+          <div class="num"><span class="stat-num" data-target="5">0</span><span>+</span></div>
           <div class="lbl">Years Experience</div>
         </div>
       </div>
@@ -351,19 +427,19 @@
     <div class="sec-bar" style="background:linear-gradient(90deg,var(--indigo),var(--violet));"></div>
 
     <div class="showcase-grid">
-      <div class="showcase-card blue">
+      <div class="showcase-card blue reveal delay-1">
         <div class="sc-icon blue">🚀</div>
         <div class="sc-num blue">5 <span style="font-size:1rem;">new</span></div>
         <div style="font-weight:700; margin-bottom:0.25rem;">SKUs Introduced</div>
         <div class="sc-label">Introduced 5 new SKUs and managed the existing 13+ SKU portfolio at TVS Electronics, expanding AIDC GTM presence.</div>
       </div>
-      <div class="showcase-card green">
+      <div class="showcase-card green reveal delay-2">
         <div class="sc-icon green">💰</div>
         <div class="sc-num green">₹3 Cr</div>
         <div style="font-weight:700; margin-bottom:0.25rem;">Revenue Achieved</div>
         <div class="sc-label">Right product, right time — driven by market intelligence and competitive benchmarking.</div>
       </div>
-      <div class="showcase-card amber">
+      <div class="showcase-card amber reveal delay-3">
         <div class="sc-icon amber">📈</div>
         <div class="sc-num amber">7.5k</div>
         <div style="font-weight:700; margin-bottom:0.25rem;">Users Acquired</div>
@@ -397,7 +473,7 @@
     <div class="timeline">
 
       <!-- Mapmyindia Current -->
-      <div class="tl-item">
+      <div class="tl-item reveal">
         <div class="tl-dot current"></div>
         <div class="tl-card">
           <div class="tl-head">
@@ -426,7 +502,7 @@
       </div>
 
       <!-- TVS Electronics -->
-      <div class="tl-item">
+      <div class="tl-item reveal delay-1">
         <div class="tl-dot past"></div>
         <div class="tl-card">
           <div class="tl-head">
@@ -465,7 +541,7 @@
       </div>
 
       <!-- Alice Blue -->
-      <div class="tl-item">
+      <div class="tl-item reveal delay-2">
         <div class="tl-dot past"></div>
         <div class="tl-card">
           <div class="tl-head">
@@ -489,7 +565,7 @@
       </div>
 
       <!-- Mapmyindia Previous -->
-      <div class="tl-item">
+      <div class="tl-item reveal delay-3">
         <div class="tl-dot past"></div>
         <div class="tl-card">
           <div class="tl-head">
@@ -529,7 +605,7 @@
     <div class="sec-label" style="color:var(--violet);">🛠️ Expertise</div>
     <h2 class="sec-title">Skills &amp; <span>Capabilities</span></h2>
     <div class="sec-bar" style="background:linear-gradient(90deg,var(--violet),var(--blue));"></div>
-    <div class="skills-grid">
+    <div class="skills-grid reveal">
       <div class="skill-card">
         <div class="skill-card-head">
           <div class="sk-icon" style="background:#ede9fe; font-size:1.1rem;">🗂️</div>
@@ -603,7 +679,7 @@
     <h2 class="sec-title">Education &amp; <span>Certifications</span></h2>
     <div class="sec-bar" style="background:linear-gradient(90deg,var(--blue),var(--cyan));"></div>
 
-    <div class="edu-grid">
+    <div class="edu-grid reveal">
       <div class="edu-card card1">
         <div class="edu-deg">M.E. · Aug 2018 – May 2020</div>
         <div class="edu-field">Manufacturing System &amp; Management</div>
@@ -625,7 +701,7 @@
     </div>
 
     <div class="certs-heading">🏅 Certifications</div>
-    <div class="certs-grid">
+    <div class="certs-grid reveal">
       <div class="cert-card">
         <div class="cert-icon ci-violet">🤖</div>
         <div>
@@ -672,7 +748,7 @@
     <h2 class="sec-title">Publications &amp; <span>Awards</span></h2>
     <div class="sec-bar" style="background:linear-gradient(90deg,var(--violet),var(--rose));"></div>
 
-    <div class="pub-card">
+    <div class="pub-card reveal">
       <div class="pub-icon">📄</div>
       <div class="pub-body">
         <span class="pub-tag">Patent Application · IPI</span>
@@ -710,7 +786,7 @@
       Open to new product management roles — remote, hybrid, or on-site across India and beyond.
       Let's build something great together.
     </p>
-    <div class="contact-grid">
+    <div class="contact-grid reveal">
       <a href="mailto:jagathishachu@gmail.com" class="contact-card">
         <div class="cc-icon">✉️</div>
         <div><h5>Email</h5><p>jagathishachu@gmail.com</p></div>
@@ -742,6 +818,78 @@
 </footer>
 
 <script>
+  /* ── PARTICLES ── */
+  (function(){
+    var canvas = document.getElementById('particles');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resize(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    for (var i = 0; i < 55; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.5,
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: -(Math.random() * 0.5 + 0.2),
+        alpha: Math.random() * 0.5 + 0.1
+      });
+    }
+    function draw(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(p){
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(165,180,252,' + p.alpha + ')';
+        ctx.fill();
+        p.x += p.dx; p.y += p.dy;
+        if (p.y < -5) { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* ── SCROLL REVEAL ── */
+  (function(){
+    var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  /* ── COUNTER ANIMATION ── */
+  (function(){
+    var counters = document.querySelectorAll('.stat-num');
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var target = parseFloat(el.getAttribute('data-target'));
+        var isFloat = target % 1 !== 0;
+        var duration = 1400;
+        var start = performance.now();
+        function step(now){
+          var p = Math.min((now - start) / duration, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          var val = target * ease;
+          el.textContent = isFloat ? val.toFixed(1) : Math.floor(val);
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = isFloat ? target.toFixed(1) : target;
+        }
+        requestAnimationFrame(step);
+        io2.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el){ io2.observe(el); });
+  })();
+
   function showPhoto(dataUrl) {
     var img = document.getElementById('profileImg');
     var initials = document.getElementById('photoInitials');
