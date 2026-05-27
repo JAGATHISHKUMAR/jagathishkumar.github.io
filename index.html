@@ -152,12 +152,12 @@
     .hero-summary { color:#374151; font-size:0.95rem; max-width:560px; line-height:1.8; margin-bottom:1.75rem; }
 
     /* Stats */
-    .hero-stats { display:flex; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; }
-    .stat-card { background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.12); border-radius:12px; padding:0.75rem 1.25rem; min-width:100px; }
-    .stat-card .num { font-size:1.5rem; font-weight:900; color:#1e1b4b; line-height:1; }
-    .stat-card .num span:not(.stat-num) { font-size:0.82rem; color:var(--indigo); vertical-align:middle; font-weight:700; }
-    .stat-card .num .stat-num { font-size:1.5rem; }
-    .stat-card .lbl { font-size:0.72rem; color:#6b7280; margin-top:0.2rem; text-transform:uppercase; letter-spacing:0.06em; }
+    .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-bottom:2rem; }
+    .stat-card { background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.14); border-radius:12px; padding:0.8rem 1rem; }
+    .stat-card .num { font-size:1.5rem; font-weight:900; color:var(--indigo); line-height:1; display:flex; align-items:baseline; gap:1px; }
+    .stat-card .num .stat-num { font-size:1.5rem; font-weight:900; color:var(--indigo); }
+    .stat-card .num .num-unit { font-size:0.78rem; font-weight:700; color:var(--indigo); opacity:0.72; line-height:1; }
+    .stat-card .lbl { font-size:0.62rem; color:var(--muted); margin-top:0.35rem; text-transform:uppercase; letter-spacing:0.07em; }
 
     .hero-badges { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.75rem; }
     .hero-badge { font-size:0.72rem; padding:0.2rem 0.65rem; border-radius:999px; border:1px solid rgba(99,102,241,0.25); color:var(--indigo); background:rgba(99,102,241,0.06); }
@@ -604,8 +604,9 @@
     html[data-theme="dark"] .hero-tag { color:#a5b4fc; background:rgba(99,102,241,0.2); border-color:rgba(99,102,241,0.4); }
     html[data-theme="dark"] .hero-tag::before { background:#a5b4fc; }
     html[data-theme="dark"] .stat-card { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); }
-    html[data-theme="dark"] .stat-card .num { color:#fff; }
-    html[data-theme="dark"] .stat-card .num span:not(.stat-num) { color:#a5b4fc; }
+    html[data-theme="dark"] .stat-card .num { color:#a5b4fc; }
+    html[data-theme="dark"] .stat-card .num .stat-num { color:#a5b4fc; }
+    html[data-theme="dark"] .stat-card .num .num-unit { color:#a5b4fc; }
     html[data-theme="dark"] .stat-card .lbl { color:rgba(255,255,255,0.45); }
     html[data-theme="dark"] .hero-badge { color:rgba(255,255,255,0.5); background:rgba(99,102,241,0.1); border-color:rgba(99,102,241,0.35); }
     html[data-theme="dark"] .btn-outline { color:#fff; background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); }
@@ -675,19 +676,19 @@
       </p>
       <div class="hero-stats">
         <div class="stat-card">
-          <div class="num"><span class="stat-num" data-target="5">0</span></div>
+          <div class="num"><span class="stat-num" data-target="5">0</span><span class="num-unit">SKUs</span></div>
           <div class="lbl">New SKUs Introduced</div>
         </div>
         <div class="stat-card">
-          <div class="num"><span>₹</span><span class="stat-num" data-target="3">0</span><span>Cr</span></div>
+          <div class="num"><span class="num-unit">₹</span><span class="stat-num" data-target="3">0</span><span class="num-unit">Cr</span></div>
           <div class="lbl">Revenue Generated</div>
         </div>
         <div class="stat-card">
-          <div class="num"><span class="stat-num" data-target="7.5">0</span><span>k</span></div>
+          <div class="num"><span class="stat-num" data-target="7.5">0</span><span class="num-unit">k</span></div>
           <div class="lbl">Users Acquired</div>
         </div>
         <div class="stat-card">
-          <div class="num"><span class="stat-num" data-target="5">0</span><span>+</span></div>
+          <div class="num"><span class="stat-num" data-target="5">0</span><span class="num-unit">Yrs</span></div>
           <div class="lbl">Years Experience</div>
         </div>
       </div>
