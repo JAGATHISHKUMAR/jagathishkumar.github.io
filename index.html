@@ -336,7 +336,83 @@
     .footer-links a { font-size:0.78rem; color:rgba(255,255,255,0.3); text-decoration:none; }
     .footer-links a:hover { color:#a5b4fc; }
 
-    @media(max-width:640px){ nav ul { display:none; } }
+    /* ══════════════════════════════
+       MOBILE RESPONSIVE — full fix
+    ══════════════════════════════ */
+    @media(max-width:768px){
+
+      /* Nav */
+      nav { padding:0 1rem; }
+      nav ul { display:none; }
+      .nav-logo span { font-size:0.85rem; }
+
+      /* Hero */
+      #hero { min-height:auto; padding-top:58px; }
+      .hero-inner { grid-template-columns:1fr; gap:0; padding:2.5rem 1.25rem 2rem; text-align:center; }
+      .hero-photo-wrap { display:none; }
+      #hero h1 { font-size:2rem; }
+      .hero-role { font-size:0.9rem; }
+      .hero-summary { font-size:0.88rem; margin:0 auto 1.25rem; }
+      .hero-stats { justify-content:center; gap:0.6rem; }
+      .stat-card { padding:0.6rem 0.9rem; min-width:80px; }
+      .stat-card .num { font-size:1.2rem; }
+      .stat-card .lbl { font-size:0.62rem; }
+      .hero-cta { justify-content:center; }
+      .btn { padding:0.55rem 1.1rem; font-size:0.82rem; }
+
+      /* Sections */
+      section { padding:2.5rem 1.25rem; }
+      .inner { padding:0; }
+      .sec-title { font-size:1.35rem; }
+
+      /* Showcase */
+      .showcase-grid { grid-template-columns:1fr; gap:1rem; }
+      .mappls-card { flex-direction:column; gap:1rem; padding:1.25rem; }
+      .mappls-card img { width:100%; max-height:180px; object-fit:cover; }
+      .mappls-card h4 { font-size:1rem; }
+
+      /* Timeline */
+      .timeline::before { left:14px; }
+      .tl-item { padding-left:40px; padding-bottom:1.75rem; }
+      .tl-dot { left:5px; width:18px; height:18px; }
+      .tl-card { padding:1rem; }
+      .tl-role { font-size:0.9rem; }
+      .tl-head { flex-direction:column; gap:0.2rem; align-items:flex-start; }
+      .tl-bullets li { font-size:0.82rem; }
+      .tl-tag-row { gap:0.35rem; }
+      .tl-tag { font-size:0.68rem; }
+      .product-link-row { gap:0.4rem; }
+      .product-link { font-size:0.7rem; padding:0.25rem 0.65rem; }
+
+      /* Skills */
+      .skills-grid { grid-template-columns:1fr; gap:1rem; }
+      .skill-card { padding:1rem; }
+      .pill { font-size:0.72rem; padding:0.2rem 0.55rem; }
+
+      /* Education */
+      .edu-grid { grid-template-columns:1fr; gap:1rem; margin-bottom:1.5rem; }
+      .edu-card { padding:1.25rem; }
+      .certs-grid { grid-template-columns:1fr; gap:0.6rem; }
+
+      /* Publications & Awards */
+      .pub-card { flex-direction:column; gap:0.75rem; padding:1rem; }
+      .awards-grid { grid-template-columns:1fr; gap:0.75rem; }
+
+      /* Contact */
+      .contact-grid { grid-template-columns:1fr; gap:0.75rem; }
+      .contact-card { padding:1rem; }
+      .contact-sub { font-size:0.88rem; }
+
+      /* Footer */
+      .footer-inner { flex-direction:column; align-items:center; text-align:center; gap:0.5rem; }
+    }
+
+    /* Small phones */
+    @media(max-width:380px){
+      #hero h1 { font-size:1.7rem; }
+      .hero-stats { gap:0.4rem; }
+      .stat-card { min-width:70px; padding:0.5rem 0.7rem; }
+    }
   </style>
 </head>
 <body>
