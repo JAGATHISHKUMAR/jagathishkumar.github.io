@@ -350,13 +350,13 @@
       #hero { min-height:auto; padding-top:58px; }
       .hero-inner { grid-template-columns:1fr; gap:0; padding:2.5rem 1.25rem 2rem; text-align:center; }
       .hero-photo-wrap { display:none; }
-      #hero h1 { font-size:2rem; }
-      .hero-role { font-size:0.9rem; }
-      .hero-summary { font-size:0.88rem; margin:0 auto 1.25rem; }
-      .hero-stats { justify-content:center; gap:0.6rem; }
-      .stat-card { padding:0.6rem 0.9rem; min-width:80px; }
-      .stat-card .num { font-size:1.2rem; }
-      .stat-card .lbl { font-size:0.62rem; }
+      #hero h1 { font-size:1.65rem; line-height:1.2; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .hero-role { font-size:0.85rem; }
+      .hero-summary { font-size:0.85rem; margin:0 auto 1.25rem; }
+      .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; width:100%; }
+      .stat-card { padding:0.7rem 0.5rem; min-width:unset; width:100%; text-align:center; }
+      .stat-card .num { font-size:1.25rem; }
+      .stat-card .lbl { font-size:0.6rem; }
       .hero-cta { justify-content:center; }
       .btn { padding:0.55rem 1.1rem; font-size:0.82rem; }
 
@@ -409,9 +409,12 @@
 
     /* Small phones */
     @media(max-width:380px){
-      #hero h1 { font-size:1.7rem; }
+      #hero h1 { font-size:1.35rem; }
+      .hero-role { font-size:0.78rem; }
       .hero-stats { gap:0.4rem; }
-      .stat-card { min-width:70px; padding:0.5rem 0.7rem; }
+      .stat-card { padding:0.5rem 0.4rem; }
+      .stat-card .num { font-size:1.1rem; }
+      .stat-card .lbl { font-size:0.55rem; }
     }
   </style>
 </head>
