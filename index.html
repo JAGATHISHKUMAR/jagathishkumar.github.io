@@ -508,9 +508,78 @@
 
     /* Scrollbar dark */
     html[data-theme="dark"] ::-webkit-scrollbar-track { background:#1a1828; }
+
+    /* ── READING PROGRESS BAR ── */
+    #progress-bar { position:fixed; top:0; left:0; height:3px; width:0%; z-index:2000; border-radius:0 2px 2px 0; background:linear-gradient(90deg,var(--indigo),var(--violet),var(--cyan),var(--emerald)); transition:width 0.08s linear; }
+
+    /* ── TYPING ANIMATION ── */
+    .typing-text { color:#a5b4fc; }
+    .typing-cursor { display:inline-block; width:2px; height:1em; background:#a5b4fc; margin-left:2px; vertical-align:middle; animation:blink 0.75s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ── PM PHILOSOPHY STRIP ── */
+    #philosophy { background:linear-gradient(180deg,var(--darker) 0%,#15123a 100%); padding:3.5rem 2rem; }
+    .philosophy-label { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#a5b4fc; margin-bottom:0.6rem; }
+    .philosophy-title { font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:900; color:#fff; margin-bottom:2rem; }
+    .philosophy-title span { background:linear-gradient(135deg,#a5b4fc,#c4b5fd,#93c5fd); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .phil-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    @media(max-width:820px){ .phil-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px){ .phil-grid { grid-template-columns:1fr; } }
+    .phil-card {
+      background:rgba(255,255,255,0.04); border:1px solid rgba(99,102,241,0.2);
+      border-radius:16px; padding:1.5rem 1.25rem; text-align:center;
+      transition:transform 0.3s, border-color 0.3s, background 0.3s;
+      position:relative; overflow:hidden;
+    }
+    .phil-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(99,102,241,0.07),transparent); opacity:0; transition:opacity 0.3s; }
+    .phil-card:hover { transform:translateY(-6px); border-color:rgba(99,102,241,0.5); }
+    .phil-card:hover::before { opacity:1; }
+    .phil-emoji { font-size:2.2rem; display:block; margin-bottom:0.75rem; }
+    .phil-title { font-size:0.88rem; font-weight:800; color:#fff; margin-bottom:0.4rem; }
+    .phil-desc  { font-size:0.76rem; color:rgba(255,255,255,0.48); line-height:1.65; }
+
+    /* ── CAREER HIGHLIGHT BAND ── */
+    #careerband { background:linear-gradient(90deg,#6366f1 0%,#8b5cf6 40%,#3b82f6 100%); padding:1.75rem 2rem; }
+    .cb-inner { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    @media(max-width:600px){ .cb-inner { grid-template-columns:repeat(2,1fr); gap:1.25rem; } }
+    .cb-item { text-align:center; color:#fff; padding:0.5rem 0; }
+    .cb-num { font-size:2rem; font-weight:900; line-height:1; }
+    .cb-lbl { font-size:0.7rem; font-weight:600; opacity:0.78; text-transform:uppercase; letter-spacing:0.07em; margin-top:0.3rem; }
+
+    /* ── WAVE DIVIDER ── */
+    .wave { overflow:hidden; line-height:0; margin-bottom:-2px; }
+    .wave svg { display:block; width:100%; }
+
+    /* ── ACHIEVEMENT BADGE ── */
+    .tl-win { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.72rem; font-weight:700; background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(5,150,105,0.08)); border:1px solid rgba(16,185,129,0.35); color:#059669; padding:0.3rem 0.8rem; border-radius:8px; margin-bottom:0.85rem; }
+    html[data-theme="dark"] .tl-win { color:#34d399; border-color:rgba(52,211,153,0.3); background:rgba(16,185,129,0.1); }
+
+    /* ── SKILL PROFICIENCY BARS ── */
+    .skill-bars { margin-top:1rem; display:flex; flex-direction:column; gap:0.55rem; }
+    .sb-row { display:flex; align-items:center; gap:0.7rem; }
+    .sb-name { font-size:0.74rem; font-weight:600; color:var(--text); width:130px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .sb-track { flex:1; height:5px; border-radius:99px; background:var(--border); overflow:hidden; }
+    .sb-fill { height:100%; border-radius:99px; width:0; transition:width 1.4s cubic-bezier(0.4,0,0.2,1); }
+    .sb-fill.fi { background:linear-gradient(90deg,var(--indigo),var(--violet)); }
+    .sb-fill.fb { background:linear-gradient(90deg,var(--blue),var(--cyan)); }
+    .sb-fill.fg { background:linear-gradient(90deg,var(--emerald),#059669); }
+    .sb-fill.fa { background:linear-gradient(90deg,var(--amber),var(--rose)); }
+    .sb-pct { font-size:0.68rem; font-weight:700; color:var(--muted); width:28px; text-align:right; }
+    html[data-theme="dark"] .sb-track { background:#2d2b45; }
+
+    /* ── BACK TO TOP ── */
+    #btt { position:fixed; bottom:1.75rem; right:1.75rem; width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--indigo),var(--violet)); color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.15rem; box-shadow:0 4px 20px rgba(99,102,241,0.45); z-index:900; opacity:0; pointer-events:none; transform:translateY(12px); transition:opacity 0.3s, transform 0.3s, box-shadow 0.3s; }
+    #btt.show { opacity:1; pointer-events:all; transform:translateY(0); }
+    #btt:hover { transform:translateY(-3px) scale(1.08); box-shadow:0 8px 28px rgba(99,102,241,0.6); }
+
+    /* dark mode: philosophy & band */
+    html[data-theme="dark"] #philosophy { background:linear-gradient(180deg,#0f0e1a 0%,#14112a 100%); }
+    html[data-theme="dark"] .phil-card  { background:rgba(255,255,255,0.03); }
   </style>
 </head>
 <body>
+<div id="progress-bar"></div>
+<button id="btt" aria-label="Back to top" title="Back to top">↑</button>
 
 <!-- ══ NAV ══ -->
 <nav>
@@ -541,7 +610,7 @@
   <div class="hero-inner">
     <div class="hero-content">
       <h1>Jagathishkumar <span>T S</span></h1>
-      <p class="hero-role">Product Manager · <em>Mappls, Mapmyindia</em> · Bengaluru</p>
+      <p class="hero-role"><span class="typing-text" id="typingText">Product Manager</span><span class="typing-cursor"></span> · <em>Mappls, Mapmyindia</em> · Bengaluru</p>
       <p class="hero-summary">
         Results-driven Product Manager with 5+ years of experience driving end-to-end product lifecycles —
         from strategy and market research to launch and post-release optimization. Combining strategic
@@ -592,6 +661,58 @@
     </div>
   </div>
 </section>
+
+<!-- ══ PM PHILOSOPHY ══ -->
+<section id="philosophy">
+  <div class="inner">
+    <div class="philosophy-label">🧠 How I Think</div>
+    <h2 class="philosophy-title">My PM <span>Philosophy</span></h2>
+    <div class="phil-grid">
+      <div class="phil-card reveal delay-1">
+        <span class="phil-emoji">📊</span>
+        <div class="phil-title">Data-Driven Decisions</div>
+        <div class="phil-desc">I let user data, market signals, and KPIs guide every product call — not assumptions or gut feel alone.</div>
+      </div>
+      <div class="phil-card reveal delay-2">
+        <span class="phil-emoji">🎯</span>
+        <div class="phil-title">Outcome over Output</div>
+        <div class="phil-desc">I focus on the impact a feature delivers — revenue, adoption, retention — not just shipping fast.</div>
+      </div>
+      <div class="phil-card reveal delay-3">
+        <span class="phil-emoji">👤</span>
+        <div class="phil-title">User-First Thinking</div>
+        <div class="phil-desc">Every roadmap decision starts with the user problem. I obsess over feedback loops and usability.</div>
+      </div>
+      <div class="phil-card reveal delay-4">
+        <span class="phil-emoji">🤝</span>
+        <div class="phil-title">Cross-Functional Trust</div>
+        <div class="phil-desc">PMs don't build alone. I align engineering, design, sales, and SCM around a single north-star metric.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAREER BAND ══ -->
+<div id="careerband">
+  <div class="cb-inner">
+    <div class="cb-item reveal delay-1">
+      <div class="cb-num">5+</div>
+      <div class="cb-lbl">Years in Product</div>
+    </div>
+    <div class="cb-item reveal delay-2">
+      <div class="cb-num">₹85Cr</div>
+      <div class="cb-lbl">Portfolio Managed</div>
+    </div>
+    <div class="cb-item reveal delay-3">
+      <div class="cb-num">18+</div>
+      <div class="cb-lbl">SKUs Owned</div>
+    </div>
+    <div class="cb-item reveal delay-4">
+      <div class="cb-num">4</div>
+      <div class="cb-lbl">Industries Covered</div>
+    </div>
+  </div>
+</div>
 
 <!-- ══ IMPACT SHOWCASE ══ -->
 <section id="showcase">
@@ -658,6 +779,7 @@
             <span class="company-pill cp-mappls">🗺️ Mapmyindia · Bengaluru</span>
             <span class="tl-current-badge">● Currently Here</span>
           </div>
+          <div class="tl-win">🗺️ India's #1 Mapping Platform · Location Intelligence</div>
           <ul class="tl-bullets">
             <li>Leading product strategy and roadmap for <strong>Mappls</strong> — India's premier digital mapping platform.</li>
             <li>Driving user acquisition, feature prioritization, and cross-functional collaboration for location intelligence products.</li>
@@ -686,6 +808,7 @@
           <div class="tl-company-row">
             <span class="company-pill cp-tvs">⚡ TVS Electronics · Bangalore</span>
           </div>
+          <div class="tl-win">🏆 ₹3 Cr Revenue from 5 New SKUs · ₹85 Cr Portfolio Owner</div>
           <ul class="tl-bullets">
             <li>Managed an <strong>₹85 Cr Track &amp; Trace product portfolio</strong> spanning Thermal Label Printers, Receipt Printers, Barcode Scanners (2D &amp; 1D), and customized products for GOVT bids — covering <strong>13+ active SKUs</strong>.</li>
             <li>Introduced <strong>5 new SKUs</strong> within the portfolio, generating <strong>₹3 Cr incremental revenue</strong> through precise market timing and competitive positioning.</li>
@@ -726,6 +849,7 @@
           <div class="tl-company-row">
             <span class="company-pill cp-alice">📈 Alice Blue · Bengaluru</span>
           </div>
+          <div class="tl-win">📈 Fintech Domain · Agile Excellence</div>
           <ul class="tl-bullets">
             <li>Optimized sprint planning and backlog prioritization, improving <strong>team efficiency and on-time delivery</strong>.</li>
             <li>Deployed <strong>Google Analytics</strong> to uncover user behavior and app performance, enabling data-driven decisions.</li>
@@ -750,6 +874,7 @@
           <div class="tl-company-row">
             <span class="company-pill cp-mappls">🗺️ Mapmyindia · Bengaluru</span>
           </div>
+          <div class="tl-win">🚀 User Base 600 → 7,500 · 3 Years of Full-Stack PM Experience</div>
           <ul class="tl-bullets">
             <li>Identified holistic problem statements and structured them into <strong>scalable product requirements</strong>.</li>
             <li>Created quarterly product roadmaps and defined feature-level objectives aligned with company vision.</li>
@@ -797,6 +922,12 @@
           <span class="pill pill-indigo">Product Operations</span>
           <span class="pill pill-indigo">Google Analytics</span>
         </div>
+        <div class="skill-bars">
+          <div class="sb-row"><span class="sb-name">Product Strategy</span><div class="sb-track"><div class="sb-fill fi" data-w="92"></div></div><span class="sb-pct">92%</span></div>
+          <div class="sb-row"><span class="sb-name">Roadmapping</span><div class="sb-track"><div class="sb-fill fi" data-w="90"></div></div><span class="sb-pct">90%</span></div>
+          <div class="sb-row"><span class="sb-name">Wireframing</span><div class="sb-track"><div class="sb-fill fi" data-w="85"></div></div><span class="sb-pct">85%</span></div>
+          <div class="sb-row"><span class="sb-name">User Research</span><div class="sb-track"><div class="sb-fill fi" data-w="88"></div></div><span class="sb-pct">88%</span></div>
+        </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-head">
@@ -811,6 +942,12 @@
           <span class="pill pill-blue">Software Product Management</span>
           <span class="pill pill-blue">MySQL</span>
           <span class="pill pill-blue">KPI Reviews</span>
+        </div>
+        <div class="skill-bars">
+          <div class="sb-row"><span class="sb-name">Sprint Planning</span><div class="sb-track"><div class="sb-fill fb" data-w="90"></div></div><span class="sb-pct">90%</span></div>
+          <div class="sb-row"><span class="sb-name">JIRA / Backlog</span><div class="sb-track"><div class="sb-fill fb" data-w="88"></div></div><span class="sb-pct">88%</span></div>
+          <div class="sb-row"><span class="sb-name">KPI Tracking</span><div class="sb-track"><div class="sb-fill fb" data-w="85"></div></div><span class="sb-pct">85%</span></div>
+          <div class="sb-row"><span class="sb-name">MySQL / Data</span><div class="sb-track"><div class="sb-fill fb" data-w="75"></div></div><span class="sb-pct">75%</span></div>
         </div>
       </div>
       <div class="skill-card">
@@ -827,6 +964,12 @@
           <span class="pill pill-green">Teardown Analysis</span>
           <span class="pill pill-green">Emerging Technologies</span>
         </div>
+        <div class="skill-bars">
+          <div class="sb-row"><span class="sb-name">Competitive Intel</span><div class="sb-track"><div class="sb-fill fg" data-w="93"></div></div><span class="sb-pct">93%</span></div>
+          <div class="sb-row"><span class="sb-name">Market Research</span><div class="sb-track"><div class="sb-fill fg" data-w="90"></div></div><span class="sb-pct">90%</span></div>
+          <div class="sb-row"><span class="sb-name">QFD / CTQ</span><div class="sb-track"><div class="sb-fill fg" data-w="82"></div></div><span class="sb-pct">82%</span></div>
+          <div class="sb-row"><span class="sb-name">Teardown Analysis</span><div class="sb-track"><div class="sb-fill fg" data-w="88"></div></div><span class="sb-pct">88%</span></div>
+        </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-head">
@@ -841,6 +984,12 @@
           <span class="pill pill-amber">Business Development</span>
           <span class="pill pill-amber">GTM Strategy</span>
           <span class="pill pill-amber">Sales Enablement</span>
+        </div>
+        <div class="skill-bars">
+          <div class="sb-row"><span class="sb-name">GTM Strategy</span><div class="sb-track"><div class="sb-fill fa" data-w="91"></div></div><span class="sb-pct">91%</span></div>
+          <div class="sb-row"><span class="sb-name">Sales Enablement</span><div class="sb-track"><div class="sb-fill fa" data-w="87"></div></div><span class="sb-pct">87%</span></div>
+          <div class="sb-row"><span class="sb-name">Customer Success</span><div class="sb-track"><div class="sb-fill fa" data-w="84"></div></div><span class="sb-pct">84%</span></div>
+          <div class="sb-row"><span class="sb-name">Biz Development</span><div class="sb-track"><div class="sb-fill fa" data-w="80"></div></div><span class="sb-pct">80%</span></div>
         </div>
       </div>
     </div>
@@ -1118,6 +1267,57 @@
     };
     reader.readAsDataURL(file);
   }
+
+  /* ── READING PROGRESS BAR ── */
+  (function() {
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+    }, { passive: true });
+  })();
+
+  /* ── BACK TO TOP ── */
+  (function() {
+    const btt = document.getElementById('btt');
+    window.addEventListener('scroll', function() {
+      btt.classList.toggle('show', window.scrollY > 400);
+    }, { passive: true });
+    btt.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+
+  /* ── TYPING ANIMATION ── */
+  (function() {
+    const el = document.getElementById('typingText');
+    if (!el) return;
+    const phrases = ['Product Manager','Strategic Thinker','Problem Solver','Customer Advocate','Growth Driver'];
+    let pi = 0, ci = 0, deleting = false;
+    function tick() {
+      const phrase = phrases[pi];
+      el.textContent = deleting ? phrase.slice(0, ci--) : phrase.slice(0, ci++);
+      if (!deleting && ci > phrase.length) { deleting = true; setTimeout(tick, 1500); return; }
+      if (deleting && ci < 0)  { deleting = false; pi = (pi + 1) % phrases.length; ci = 0; setTimeout(tick, 400); return; }
+      setTimeout(tick, deleting ? 55 : 90);
+    }
+    setTimeout(tick, 1200);
+  })();
+
+  /* ── SKILL PROFICIENCY BARS (animate on reveal) ── */
+  (function() {
+    const bars = document.querySelectorAll('.sb-fill');
+    const io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.style.width = (e.target.dataset.w || 0) + '%';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    bars.forEach(function(b) { io.observe(b); });
+  })();
 
   /* ── DARK / LIGHT MODE TOGGLE ── */
   (function() {
