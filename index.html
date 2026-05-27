@@ -155,7 +155,8 @@
     .hero-stats { display:flex; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; }
     .stat-card { background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.12); border-radius:12px; padding:0.75rem 1.25rem; min-width:100px; }
     .stat-card .num { font-size:1.5rem; font-weight:900; color:#1e1b4b; line-height:1; }
-    .stat-card .num span { font-size:0.9rem; color:var(--indigo); }
+    .stat-card .num span:not(.stat-num) { font-size:0.82rem; color:var(--indigo); vertical-align:middle; font-weight:700; }
+    .stat-card .num .stat-num { font-size:1.5rem; }
     .stat-card .lbl { font-size:0.72rem; color:#6b7280; margin-top:0.2rem; text-transform:uppercase; letter-spacing:0.06em; }
 
     .hero-badges { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.75rem; }
@@ -604,7 +605,7 @@
     html[data-theme="dark"] .hero-tag::before { background:#a5b4fc; }
     html[data-theme="dark"] .stat-card { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); }
     html[data-theme="dark"] .stat-card .num { color:#fff; }
-    html[data-theme="dark"] .stat-card .num span { color:#a5b4fc; }
+    html[data-theme="dark"] .stat-card .num span:not(.stat-num) { color:#a5b4fc; }
     html[data-theme="dark"] .stat-card .lbl { color:rgba(255,255,255,0.45); }
     html[data-theme="dark"] .hero-badge { color:rgba(255,255,255,0.5); background:rgba(99,102,241,0.1); border-color:rgba(99,102,241,0.35); }
     html[data-theme="dark"] .btn-outline { color:#fff; background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); }
@@ -678,7 +679,7 @@
           <div class="lbl">New SKUs Introduced</div>
         </div>
         <div class="stat-card">
-          <div class="num">₹<span class="stat-num" data-target="3">0</span><span>Cr</span></div>
+          <div class="num"><span>₹</span><span class="stat-num" data-target="3">0</span><span>Cr</span></div>
           <div class="lbl">Revenue Generated</div>
         </div>
         <div class="stat-card">
