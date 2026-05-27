@@ -24,8 +24,8 @@
       --light:     #f8f7ff;
     }
 
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; max-width: 100vw; }
 
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 6px; }
@@ -73,7 +73,7 @@
     #hero { background-size: 300% 300%; animation: gradShift 12s ease infinite; }
 
     /* Particles canvas */
-    #particles { position:absolute; inset:0; pointer-events:none; z-index:0; }
+    #particles { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
 
     /* Stat card shimmer on hover */
     .stat-card { transition: transform 0.25s, box-shadow 0.25s; }
@@ -128,6 +128,7 @@
       min-height: 100vh; padding-top: 58px;
       background: linear-gradient(135deg, var(--darker) 0%, #1a1040 40%, #0d1b3e 100%);
       display: flex; align-items: center; overflow: hidden; position: relative;
+      contain: layout;
     }
     .hero-bg-circles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
     .hero-bg-circles span {
@@ -352,7 +353,7 @@
       .hero-photo-wrap { order:-1; animation:none; }
       .hero-photo-ring { width:160px; height:160px; }
       .photo-badge { font-size:0.62rem; padding:0.25rem 0.6rem; right:0; bottom:0; }
-      #hero h1 { font-size:1.65rem; line-height:1.2; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      #hero h1 { font-size:1.6rem; line-height:1.2; word-break:normal; white-space:normal; }
       .hero-role { font-size:0.85rem; }
       .hero-summary { font-size:0.85rem; margin:0 auto 1.25rem; }
       .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; width:100%; }
@@ -380,6 +381,9 @@
       .tl-card { padding:1rem; }
       .tl-role { font-size:0.9rem; }
       .tl-head { flex-direction:column; gap:0.2rem; align-items:flex-start; }
+      .tl-company-row { flex-wrap:wrap; gap:0.4rem; }
+      .company-pill { font-size:0.75rem; }
+      .tl-current-badge { font-size:0.65rem; }
       .tl-bullets li { font-size:0.82rem; }
       .tl-tag-row { gap:0.35rem; }
       .tl-tag { font-size:0.68rem; }
