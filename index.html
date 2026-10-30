@@ -4,857 +4,332 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jagathishkumar T S — Product Manager</title>
+  <meta name="description" content="Jagathishkumar T S — Product Manager for consumer growth, maps & navigation and Android at MapmyIndia (Mappls), Bengaluru." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    /* Apply saved / system theme before paint to avoid a flash */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('portfolio-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── TOKENS ── */
     :root {
-      --indigo:    #6366f1;
-      --violet:    #8b5cf6;
-      --blue:      #3b82f6;
-      --cyan:      #06b6d4;
-      --emerald:   #10b981;
-      --amber:     #f59e0b;
-      --rose:      #f43f5e;
-      --dark:      #1e1b4b;
-      --darker:    #0f0e2a;
-      --text:      #111827;
-      --muted:     #6b7280;
-      --border:    #e5e7eb;
-      --bg:        #ffffff;
-      --light:     #f8f7ff;
+      --bg: #ffffff;
+      --bg-alt: #f7f8fa;
+      --surface: #ffffff;
+      --text: #111827;
+      --text-2: #4b5563;
+      --text-3: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2747d4;
+      --accent-soft: #eef1fd;
+      --chip: #f3f4f6;
+      --shadow: 0 1px 2px rgba(17,24,39,0.04), 0 8px 24px rgba(17,24,39,0.06);
+    }
+    :root[data-theme="dark"] {
+      --bg: #0e1117;
+      --bg-alt: #141821;
+      --surface: #171b24;
+      --text: #f3f4f6;
+      --text-2: #c2c7d0;
+      --text-3: #8b93a1;
+      --line: #262c38;
+      --accent: #8ea2ff;
+      --accent-soft: #1c2340;
+      --chip: #1f2430;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
     }
 
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; max-width: 100vw; }
-
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--light); }
-    ::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 3px; }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
-    @keyframes slideRight { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
-    @keyframes floatBob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
-    @keyframes gradShift { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
-    @keyframes particleDrift { 0% { transform:translateY(0) translateX(0) scale(1); opacity:0.6; } 50% { opacity:0.2; } 100% { transform:translateY(-120px) translateX(40px) scale(0.5); opacity:0; } }
-    @keyframes borderGlow { 0%,100% { box-shadow:0 0 0 0 rgba(99,102,241,0); } 50% { box-shadow:0 0 20px 4px rgba(99,102,241,0.25); } }
-    @keyframes spinRing  { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
-    @keyframes tagPop    { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } }
-
-    /* Scroll-reveal base */
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .reveal-left { opacity:0; transform:translateX(-30px); transition:opacity 0.65s ease, transform 0.65s ease; }
-    .reveal-left.visible { opacity:1; transform:translateX(0); }
-    .reveal-scale { opacity:0; transform:scale(0.9); transition:opacity 0.6s ease, transform 0.6s ease; }
-    .reveal-scale.visible { opacity:1; transform:scale(1); }
-
-    /* Stagger delays */
-    .delay-1 { transition-delay:0.1s !important; }
-    .delay-2 { transition-delay:0.2s !important; }
-    .delay-3 { transition-delay:0.3s !important; }
-    .delay-4 { transition-delay:0.4s !important; }
-    .delay-5 { transition-delay:0.5s !important; }
-
-    /* Hero text entrance */
-    .hero-quote   { animation: fadeUp 0.7s ease both 0.08s; }
-    .hero-intro   { animation: fadeUp 0.7s ease both 0.2s; }
-    #hero h1      { animation: fadeUp 0.7s ease both 0.32s; }
-    .currently-row{ animation: fadeUp 0.7s ease both 0.44s; }
-    .hero-summary { animation: fadeUp 0.7s ease both 0.54s; }
-    .hero-stats   { animation: fadeUp 0.7s ease both 0.64s; }
-    .hero-cta     { animation: fadeUp 0.7s ease both 0.74s; }
-    .hero-socials { animation: fadeUp 0.7s ease both 0.84s; }
-
-    /* Photo float */
-    .hero-photo-wrap { animation: floatBob 5s ease-in-out infinite; }
-
-    /* Animated gradient hero background */
-    #hero { background-size: 300% 300%; animation: gradShift 12s ease infinite; }
-
-    /* Particles canvas */
-    #particles { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
-
-    /* Stat card shimmer on hover */
-    .stat-card { transition: transform 0.25s, box-shadow 0.25s; }
-    .stat-card:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 8px 28px rgba(99,102,241,0.35); }
-
-    /* Showcase cards */
-    .showcase-card { animation: borderGlow 3s ease-in-out infinite; }
-    .showcase-card.green { animation-delay:1s; }
-    .showcase-card.amber { animation-delay:2s; }
-
-    /* Timeline glow on hover */
-    .tl-card { transition: box-shadow 0.3s, transform 0.3s; }
-    .tl-card:hover { transform:translateX(4px); box-shadow:0 8px 28px rgba(99,102,241,0.15); }
-
-    /* Skill pill hover */
-    .pill { transition: transform 0.2s, box-shadow 0.2s; cursor:default; }
-    .pill:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(99,102,241,0.2); }
-
-    /* Product link pulse */
-    .product-link { position:relative; overflow:hidden; }
-    .product-link::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent); transform:translateX(-100%); transition:transform 0.4s; }
-    .product-link:hover::after { transform:translateX(100%); }
-
-    /* Cert card */
-    .cert-card { transition: transform 0.25s, box-shadow 0.25s; }
-    .cert-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(99,102,241,0.12); }
-
-    /* Contact card */
-    .contact-card { transition: all 0.25s; }
-
-    /* Section title underline animation */
-    .sec-bar { background:linear-gradient(90deg,var(--indigo),var(--violet),var(--blue)); background-size:200%; animation:gradShift 4s ease infinite; }
+    /* ── BASE ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s, color 0.2s;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+    section.alt { background: var(--bg-alt); }
+    .sec-head { margin-bottom: 40px; }
+    .eyebrow {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    h2 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+    .icon { width: 18px; height: 18px; flex-shrink: 0; }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(99,102,241,0.12);
-      padding: 0 2rem; display: flex; align-items: center;
-      justify-content: space-between; height: 58px;
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
-    .nav-logo { display: flex; align-items: center; gap: 0.6rem; }
-    .nav-logo .dot { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,var(--indigo),var(--violet)); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.75rem; color:#fff; }
-    .nav-logo span { font-weight: 700; color: #1e1b4b; font-size: 0.95rem; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul a { text-decoration: none; color: #4b5563; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.03em; }
-    nav ul a:hover { color: var(--indigo); }
-    .nav-cta { background: linear-gradient(135deg,var(--indigo),var(--violet)); color: #fff !important; padding: 0.35rem 1rem; border-radius: 6px; font-weight: 600 !important; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 24px; }
+    .brand { font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 0.9rem; font-weight: 500; color: var(--text-2); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .theme-toggle {
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--line);
+      background: transparent; color: var(--text-2); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--text-3); }
+    .theme-toggle .moon { display: none; }
+    :root[data-theme="dark"] .theme-toggle .sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .moon { display: block; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px; border-radius: 8px;
+      font-size: 0.92rem; font-weight: 600; text-decoration: none;
+      border: 1px solid transparent; transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { background: var(--accent); color: #fff; }
+    .btn-ghost { border-color: var(--line); color: var(--text); background: var(--surface); }
+    .btn-ghost:hover { border-color: var(--text-3); }
+    .btn-sm { padding: 7px 14px; font-size: 0.85rem; }
 
     /* ── HERO ── */
-    #hero {
-      min-height: 100vh; padding-top: 58px;
-      background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 40%, #eff6ff 100%);
-      display: flex; align-items: center; overflow: hidden; position: relative;
-      contain: layout;
+    #hero { padding: 96px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 64px; align-items: center; }
+    .hero-role { font-size: 0.95rem; font-weight: 600; color: var(--accent); margin-bottom: 14px; }
+    h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.035em; line-height: 1.08; margin-bottom: 22px; }
+    .hero-summary { font-size: 1.12rem; color: var(--text-2); max-width: 560px; margin-bottom: 28px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 0.9rem; color: var(--text-3); }
+    .hero-meta span, .hero-meta a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+    .hero-meta a:hover { color: var(--text); }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; }
+    .hero-photo {
+      width: 100%; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden;
+      background: var(--bg-alt); border: 1px solid var(--line); box-shadow: var(--shadow);
     }
-    .hero-bg-circles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-    .hero-bg-circles span {
-      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18;
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+
+    /* ── METRICS ── */
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      margin-top: 72px;
     }
-    .hero-bg-circles span:nth-child(1) { width:500px; height:500px; background:var(--indigo); top:-100px; right:-100px; }
-    .hero-bg-circles span:nth-child(2) { width:350px; height:350px; background:var(--violet); bottom:-50px; left:5%; }
-    .hero-bg-circles span:nth-child(3) { width:250px; height:250px; background:var(--blue); top:40%; left:40%; }
+    .metric { padding: 28px 24px; }
+    .metric + .metric { border-left: 1px solid var(--line); }
+    .metric-num { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+    .metric-lbl { font-size: 0.88rem; color: var(--text-3); margin-top: 6px; }
 
-    .hero-inner { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem 4rem; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; width: 100%; position: relative; z-index: 1; }
-    @media(max-width:780px){ .hero-inner { grid-template-columns: 1fr; text-align:center; grid-template-rows: auto auto; justify-items:center; } }
-
-    /* Quote greeting */
-    .hero-quote { font-size:clamp(1.7rem,3.2vw,2.6rem); font-weight:800; font-style:italic; color:var(--indigo); letter-spacing:-0.01em; margin-bottom:0.7rem; line-height:1.2; }
-
-    /* ── I'm [name] with separator line */
-    .hero-intro { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.9rem; }
-    .hero-intro-line { width:40px; height:2px; background:var(--indigo); flex-shrink:0; border-radius:1px; }
-    .hero-intro-text { font-size:1rem; color:var(--muted); font-weight:500; }
-
-    /* Role as big h1 */
-    #hero h1 { font-size:clamp(2.4rem,5vw,4rem); font-weight:900; line-height:1.05; color:#1e1b4b; margin-bottom:0.85rem; }
-
-    /* Currently badge */
-    .currently-row { display:inline-flex; align-items:center; gap:0.65rem; margin-bottom:1.25rem; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); }
-    .currently-pill { background:linear-gradient(135deg,var(--indigo),var(--violet)); color:#fff; padding:0.28rem 0.9rem; border-radius:999px; font-size:0.7rem; font-weight:700; letter-spacing:0.03em; text-transform:none; }
-
-    .hero-summary { color:#374151; font-size:0.93rem; max-width:500px; line-height:1.8; margin-bottom:1.4rem; }
-
-    /* Stats */
-    .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-bottom:1.5rem; }
-    .stat-card { background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.14); border-radius:12px; padding:0.8rem 1rem; }
-    .stat-card .num { font-size:1.5rem; font-weight:900; color:var(--indigo); line-height:1; display:flex; align-items:baseline; gap:1px; }
-    .stat-card .num .stat-num { font-size:1.5rem; font-weight:900; color:var(--indigo); }
-    .stat-card .num .num-unit { font-size:0.78rem; font-weight:700; color:var(--indigo); opacity:0.72; line-height:1; }
-    .stat-card .lbl { font-size:0.62rem; color:var(--muted); margin-top:0.35rem; text-transform:uppercase; letter-spacing:0.07em; }
-
-    .hero-cta { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:0; }
-    .btn { display:inline-flex; align-items:center; gap:0.45rem; padding:0.65rem 1.4rem; border-radius:10px; font-size:0.875rem; font-weight:600; text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; }
-    .btn-grad { background:linear-gradient(135deg,var(--indigo),var(--violet)); color:#fff; box-shadow:0 4px 20px rgba(99,102,241,0.4); }
-    .btn-grad:hover { transform:translateY(-2px); box-shadow:0 6px 28px rgba(99,102,241,0.5); }
-    .btn-outline { border:1px solid rgba(99,102,241,0.3); color:var(--indigo); background:rgba(99,102,241,0.05); }
-    .btn-outline:hover { background:rgba(99,102,241,0.12); }
-
-    /* Social icons row */
-    .hero-socials { display:flex; gap:0.6rem; margin-top:1.1rem; }
-    .hero-socials a { width:38px; height:38px; border-radius:50%; border:1px solid rgba(99,102,241,0.22); display:flex; align-items:center; justify-content:center; font-size:1.05rem; text-decoration:none; color:var(--muted); background:rgba(99,102,241,0.04); transition:all 0.22s; }
-    .hero-socials a:hover { border-color:var(--indigo); background:rgba(99,102,241,0.12); transform:translateY(-3px); color:var(--indigo); }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    /* Photo */
-    .hero-photo-wrap { position:relative; }
-    .hero-photo-wrap::before {
-      content:''; position:absolute; inset:-14px; border-radius:50%; pointer-events:none;
-      border:2px solid transparent;
-      border-top-color:var(--indigo); border-right-color:rgba(99,102,241,0.25);
-      animation:spinRing 8s linear infinite;
+    /* ── FOCUS ── */
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .focus-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px;
     }
-    .hero-photo-wrap::after {
-      content:''; position:absolute; inset:-26px; border-radius:50%; pointer-events:none;
-      border:1.5px solid transparent;
-      border-bottom-color:var(--violet); border-left-color:rgba(139,92,246,0.18);
-      animation:spinRing 14s linear infinite reverse;
-    }
-    .hero-photo-ring {
-      width:280px; height:280px; border-radius:50%; padding:4px;
-      background:linear-gradient(135deg,var(--indigo),var(--violet),var(--blue),var(--cyan));
-      box-shadow: 0 0 0 8px rgba(99,102,241,0.07), 0 0 80px rgba(99,102,241,0.5), 0 0 140px rgba(99,102,241,0.18);
-    }
-    .hero-photo-inner { width:100%; height:100%; border-radius:50%; overflow:hidden; background:#f0f0ff; display:flex; align-items:center; justify-content:center; }
-    .hero-photo-inner img { width:100%; height:100%; object-fit:cover; object-position:top; }
-    .photo-initials { font-size:4rem; font-weight:900; background:linear-gradient(135deg,#a5b4fc,#c4b5fd); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-
-    /* ── SECTION BASE ── */
-    section { padding: 5rem 2rem; }
-    .inner { max-width:1080px; margin:0 auto; }
-    .sec-label { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.6rem; }
-    .sec-title { font-size:clamp(1.6rem,3vw,2.2rem); font-weight:900; margin-bottom:0.5rem; }
-    .sec-title span { background:linear-gradient(135deg,var(--indigo),var(--violet)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .sec-bar { width:40px; height:4px; border-radius:2px; margin-bottom:3rem; }
-
-    /* ── PRODUCT SHOWCASE ── */
-    #showcase { background: linear-gradient(135deg,#f0f0ff 0%,#faf5ff 50%,#f0f9ff 100%); }
-    .showcase-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-    @media(max-width:700px){ .showcase-grid { grid-template-columns:1fr; } }
-    .showcase-card {
-      background:#fff; border:1px solid var(--border); border-radius:16px; padding:1.5rem; position:relative; overflow:hidden;
-      transition:transform 0.25s, box-shadow 0.25s;
-    }
-    .showcase-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(99,102,241,0.12); }
-    .showcase-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
-    .showcase-card.blue::before  { background:linear-gradient(90deg,var(--indigo),var(--blue)); }
-    .showcase-card.green::before { background:linear-gradient(90deg,var(--emerald),var(--cyan)); }
-    .showcase-card.amber::before { background:linear-gradient(90deg,var(--amber),var(--rose)); }
-    .sc-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1.3rem; }
-    .sc-icon.blue  { background:#eff6ff; }
-    .sc-icon.green { background:#ecfdf5; }
-    .sc-icon.amber { background:#fffbeb; }
-    .sc-num { font-size:2rem; font-weight:900; line-height:1; margin-bottom:0.25rem; }
-    .sc-num.blue  { color:var(--indigo); }
-    .sc-num.green { color:var(--emerald); }
-    .sc-num.amber { color:var(--amber); }
-    .sc-label { font-size:0.8rem; color:var(--muted); }
-
-    /* Mappls product card */
-    .mappls-card {
-      background: linear-gradient(135deg,#1e1b4b,#312e81); border-radius:16px; padding:1.5rem;
-      display:flex; gap:1.5rem; align-items:center; margin-top:1.5rem; color:#fff;
-    }
-    .mappls-card img { width:130px; border-radius:16px; flex-shrink:0; box-shadow:0 8px 24px rgba(0,0,0,0.5); }
-    .mappls-card h4 { font-size:1.1rem; font-weight:800; margin-bottom:0.3rem; }
-    .mappls-card p  { font-size:0.85rem; color:rgba(255,255,255,0.65); line-height:1.7; }
-    .mappls-tag { display:inline-block; background:rgba(99,102,241,0.3); border:1px solid rgba(99,102,241,0.5); color:#a5b4fc; font-size:0.7rem; font-weight:700; padding:0.15rem 0.6rem; border-radius:999px; margin-bottom:0.5rem; }
-    @media(max-width:600px){ .mappls-card { flex-direction:column; } }
+    .focus-card h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 8px; }
+    .focus-card p { font-size: 0.93rem; color: var(--text-2); }
+    .focus-num { font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 14px; font-variant-numeric: tabular-nums; }
 
     /* ── EXPERIENCE ── */
-    #experience { background: var(--bg); }
-    .timeline { display:flex; flex-direction:column; gap:0; position:relative; }
-    .timeline::before { content:''; position:absolute; left:20px; top:8px; bottom:0; width:2px; background:linear-gradient(180deg,var(--indigo),var(--violet),var(--blue)); border-radius:2px; }
-    .tl-item { padding-left:56px; padding-bottom:2.5rem; position:relative; }
-    .tl-dot { position:absolute; left:11px; top:6px; width:20px; height:20px; border-radius:50%; border:3px solid #fff; box-shadow:0 0 0 2px var(--indigo); z-index:1; }
-    .tl-dot.current { background:var(--emerald); box-shadow:0 0 0 2px var(--emerald); animation:glowDot 2s infinite; }
-    .tl-dot.past    { background:var(--indigo); }
-    @keyframes glowDot { 0%,100%{box-shadow:0 0 0 2px var(--emerald)} 50%{box-shadow:0 0 0 5px rgba(16,185,129,0.3)} }
-
-    .tl-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.5rem; transition:box-shadow 0.2s; }
-    .tl-card:hover { box-shadow:0 6px 24px rgba(99,102,241,0.1); }
-    .tl-head { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:baseline; justify-content:space-between; margin-bottom:0.3rem; }
-    .tl-role { font-weight:800; font-size:1rem; color:var(--text); }
-    .tl-date { font-size:0.75rem; color:var(--muted); }
-    .tl-company-row { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.9rem; }
-    .company-pill { display:inline-flex; align-items:center; gap:0.35rem; font-size:0.8rem; font-weight:700; padding:0.2rem 0.75rem; border-radius:999px; }
-    .cp-mappls { background:#e0e7ff; color:var(--indigo); }
-    .cp-tvs    { background:#ecfdf5; color:#065f46; }
-    .cp-alice  { background:#fef3c7; color:#92400e; }
-    .tl-current-badge { font-size:0.7rem; font-weight:700; background:linear-gradient(135deg,var(--emerald),#059669); color:#fff; padding:0.15rem 0.6rem; border-radius:999px; }
-    .tl-bullets { padding-left:1rem; display:flex; flex-direction:column; gap:0.35rem; }
-    .tl-bullets li { font-size:0.875rem; color:var(--muted); line-height:1.65; }
-    .tl-bullets li strong { color:var(--text); font-weight:600; }
-    .tl-tag-row { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.9rem; }
-    .tl-tag { font-size:0.72rem; padding:0.15rem 0.6rem; border-radius:999px; background:var(--light); color:var(--indigo); border:1px solid #ddd6fe; font-weight:500; }
-    .product-link-row { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem; }
-    .product-link { display:inline-flex; align-items:center; gap:0.35rem; font-size:0.75rem; font-weight:600; padding:0.3rem 0.8rem; border-radius:8px; background:#fff; border:1.5px solid var(--indigo); color:var(--indigo); text-decoration:none; transition:all 0.2s; }
-    .product-link:hover { background:var(--indigo); color:#fff; transform:translateY(-1px); box-shadow:0 4px 12px rgba(99,102,241,0.25); }
-    .product-link svg { flex-shrink:0; }
+    .job { display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--line); }
+    .job:last-child { border-bottom: 1px solid var(--line); }
+    .job-side .date { font-size: 0.88rem; font-weight: 500; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .job-side .company { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+    .job-side .loc { font-size: 0.85rem; color: var(--text-3); }
+    .job h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .job-lede { color: var(--text-2); margin-bottom: 16px; }
+    .job ul { list-style: none; display: grid; gap: 10px; }
+    .job li { position: relative; padding-left: 20px; color: var(--text-2); font-size: 0.96rem; }
+    .job li::before { content: ''; position: absolute; left: 2px; top: 0.7em; width: 6px; height: 1.5px; background: var(--text-3); }
+    .job li strong { color: var(--text); font-weight: 600; }
+    .job details { margin-top: 14px; }
+    .job summary {
+      cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--accent);
+      list-style: none; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .job summary::-webkit-details-marker { display: none; }
+    .job summary .chev { transition: transform 0.2s; }
+    .job details[open] summary .chev { transform: rotate(180deg); }
+    .job details[open] summary .more { display: none; }
+    .job summary .less { display: none; }
+    .job details[open] summary .less { display: inline; }
+    .job details ul { margin-top: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag { font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: var(--chip); color: var(--text-2); }
+    .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; }
+    .links a { font-size: 0.88rem; font-weight: 500; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+    .links a:hover { text-decoration: underline; }
 
     /* ── SKILLS ── */
-    #skills { background:linear-gradient(135deg,#f0f0ff,#faf5ff,#f0f9ff); }
-    .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
-    @media(max-width:640px){ .skills-grid { grid-template-columns:1fr; } }
-    .skill-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.5rem; }
-    .skill-card-head { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.9rem; }
-    .sk-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
-    .sk-indigo { background:#ede9fe; font-size:1.1rem; }
-    .sk-blue   { background:#dbeafe; }
-    .sk-green  { background:#d1fae5; }
-    .sk-amber  { background:#fef3c7; }
-    .sk-label { font-size:0.8rem; font-weight:700; color:var(--text); }
-    .pills { display:flex; flex-wrap:wrap; gap:0.4rem; }
-    .pill { font-size:0.78rem; font-weight:500; padding:0.25rem 0.7rem; border-radius:999px; }
-    .pill-indigo { background:#ede9fe; color:#5b21b6; border:1px solid #ddd6fe; }
-    .pill-blue   { background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe; }
-    .pill-green  { background:#d1fae5; color:#065f46; border:1px solid #a7f3d0; }
-    .pill-amber  { background:#fef3c7; color:#92400e; border:1px solid #fde68a; }
+    .skill-row { display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 22px 0; border-top: 1px solid var(--line); }
+    .skill-row:last-child { border-bottom: 1px solid var(--line); }
+    .skill-row h3 { font-size: 0.98rem; font-weight: 600; }
+    .skill-row p { color: var(--text-2); font-size: 0.96rem; }
 
-    /* ── EDUCATION & CERTS ── */
-    #education { background:var(--bg); }
-    .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:3rem; }
-    @media(max-width:600px){ .edu-grid { grid-template-columns:1fr; } }
-    .edu-card { border-radius:14px; padding:1.5rem; color:#fff; position:relative; overflow:hidden; }
-    .edu-card.card1 { background:linear-gradient(135deg,#1e1b4b,#312e81); }
-    .edu-card.card2 { background:linear-gradient(135deg,#0c4a6e,#0e7490); }
-    .edu-deg { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); margin-bottom:0.3rem; }
-    .edu-field { font-size:1rem; font-weight:800; margin-bottom:0.25rem; }
-    .edu-uni { font-size:0.85rem; color:rgba(255,255,255,0.7); }
-    .edu-meta { display:flex; justify-content:space-between; margin-top:0.75rem; font-size:0.8rem; color:rgba(255,255,255,0.55); }
-    .edu-gpa { background:rgba(255,255,255,0.15); padding:0.15rem 0.6rem; border-radius:999px; color:#fff; font-weight:700; }
-
-    .certs-heading { font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:1rem; }
-    .certs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; }
-    @media(max-width:700px){ .certs-grid { grid-template-columns:1fr; } }
-    .cert-card { border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; background:#fff; display:flex; align-items:flex-start; gap:0.75rem; transition:box-shadow 0.2s; }
-    .cert-card:hover { box-shadow:0 4px 16px rgba(99,102,241,0.1); }
-    .cert-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1rem; }
-    .ci-violet { background:#ede9fe; }
-    .ci-blue   { background:#dbeafe; }
-    .ci-green  { background:#d1fae5; }
-    .cert-card h5 { font-size:0.82rem; font-weight:700; margin-bottom:0.15rem; }
-    .cert-card p  { font-size:0.75rem; color:var(--muted); }
-
-    /* ── PUBLICATIONS & AWARDS ── */
-    #publications { background:linear-gradient(135deg,#f0f0ff,#fdf4ff); }
-    .pub-card {
-      background:#fff; border-radius:14px; border:1px solid var(--border);
-      padding:1.5rem; display:flex; gap:1rem; align-items:flex-start; margin-bottom:1.5rem;
-    }
-    .pub-icon { width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,var(--indigo),var(--violet)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
-    .pub-body h4 { font-size:0.95rem; font-weight:800; margin-bottom:0.3rem; }
-    .pub-body p  { font-size:0.82rem; color:var(--muted); }
-    .pub-tag { display:inline-block; font-size:0.7rem; font-weight:700; background:#ede9fe; color:var(--indigo); border:1px solid #ddd6fe; padding:0.15rem 0.6rem; border-radius:999px; margin-bottom:0.4rem; }
-
-    .awards-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    @media(max-width:600px){ .awards-grid { grid-template-columns:1fr; } }
-    .award-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem; }
-    .award-trophy { font-size:2rem; }
-    .award-card h5 { font-size:0.9rem; font-weight:700; }
-    .award-card p  { font-size:0.8rem; color:var(--muted); }
+    /* ── EDUCATION / CERTS / AWARDS ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .sub-head { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+    .list-item { padding: 16px 0; border-top: 1px solid var(--line); }
+    .list-item:last-child { border-bottom: 1px solid var(--line); }
+    .list-item h4 { font-size: 0.98rem; font-weight: 600; }
+    .list-item p { font-size: 0.9rem; color: var(--text-2); }
+    .list-item .meta { font-size: 0.85rem; color: var(--text-3); margin-top: 2px; font-variant-numeric: tabular-nums; }
+    .stack + .stack { margin-top: 40px; }
 
     /* ── CONTACT ── */
-    #contact { background:linear-gradient(135deg, var(--light), var(--bg), var(--light)); padding:5rem 2rem; }
-    #contact .sec-title { color:var(--text); }
-    #contact .sec-label { color:var(--indigo); }
-    #contact .sec-bar { background:linear-gradient(90deg,var(--indigo),var(--violet)); }
-    .contact-sub { color:var(--muted); font-size:0.95rem; max-width:500px; margin-bottom:2.5rem; line-height:1.7; }
-    .contact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-    @media(max-width:600px){ .contact-grid { grid-template-columns:1fr; } }
-    .contact-card { background:rgba(99,102,241,0.04); border:1px solid rgba(99,102,241,0.12); border-radius:14px; padding:1.25rem 1.5rem; text-decoration:none; color:var(--text); display:flex; align-items:center; gap:0.85rem; transition:all 0.2s; }
-    .contact-card:hover { background:rgba(99,102,241,0.1); border-color:rgba(99,102,241,0.3); transform:translateY(-2px); }
-    .cc-icon { width:42px; height:42px; border-radius:11px; background:rgba(99,102,241,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem; }
-    .contact-card h5 { font-size:0.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.1rem; }
-    .contact-card p  { font-size:0.9rem; font-weight:600; }
-
-    footer { background:var(--light); border-top:1px solid var(--border); padding:1.5rem 2rem; text-align:center; }
-    .footer-inner { max-width:1080px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-    .footer-inner p { font-size:0.78rem; color:var(--muted); }
-    .footer-links { display:flex; gap:1rem; }
-    .footer-links a { font-size:0.78rem; color:var(--muted); text-decoration:none; }
-    .footer-links a:hover { color:var(--indigo); }
-
-    /* ══════════════════════════════
-       MOBILE RESPONSIVE — full fix
-    ══════════════════════════════ */
-    @media(max-width:768px){
-
-      /* Nav */
-      nav { padding:0 1rem; }
-      nav ul { display:none; }
-      .nav-logo span { font-size:0.85rem; }
-
-      /* Hero */
-      #hero { min-height:auto; padding-top:58px; }
-      .hero-inner { grid-template-columns:1fr; gap:1.5rem; padding:2rem 1.25rem 2rem; text-align:center; justify-items:center; }
-      .hero-photo-wrap { order:-1; animation:none; }
-      .hero-photo-wrap::before, .hero-photo-wrap::after { display:none; }
-      .hero-photo-ring { width:160px; height:160px; }
-      #hero h1 { font-size:1.75rem; line-height:1.15; }
-      .hero-quote { font-size:1.35rem; }
-      .hero-intro { justify-content:center; }
-      .hero-intro-line { display:none; }
-      .currently-row { justify-content:center; flex-wrap:wrap; text-align:center; }
-      .hero-summary { font-size:0.85rem; margin:0 auto 1.25rem; }
-      .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; width:100%; }
-      .stat-card { padding:0.7rem 0.5rem; min-width:unset; width:100%; text-align:center; }
-      .stat-card .num { font-size:1.25rem; justify-content:center; }
-      .stat-card .lbl { font-size:0.6rem; }
-      .hero-cta { justify-content:center; }
-      .hero-socials { justify-content:center; }
-      .btn { padding:0.55rem 1.1rem; font-size:0.82rem; }
-
-      /* Sections */
-      section { padding:2.5rem 1.25rem; }
-      .inner { padding:0; }
-      .sec-title { font-size:1.35rem; }
-
-      /* Showcase */
-      .showcase-grid { grid-template-columns:1fr; gap:1rem; }
-      .mappls-card { flex-direction:column; gap:1rem; padding:1.25rem; }
-      .mappls-card img { width:100%; max-height:180px; object-fit:cover; }
-      .mappls-card h4 { font-size:1rem; }
-
-      /* Timeline */
-      .timeline::before { left:14px; }
-      .tl-item { padding-left:40px; padding-bottom:1.75rem; }
-      .tl-dot { left:5px; width:18px; height:18px; }
-      .tl-card { padding:1rem; }
-      .tl-role { font-size:0.9rem; }
-      .tl-head { flex-direction:column; gap:0.2rem; align-items:flex-start; }
-      .tl-company-row { flex-wrap:wrap; gap:0.4rem; }
-      .company-pill { font-size:0.75rem; }
-      .tl-current-badge { font-size:0.65rem; }
-      .tl-bullets li { font-size:0.82rem; }
-      .tl-tag-row { gap:0.35rem; }
-      .tl-tag { font-size:0.68rem; }
-      .product-link-row { gap:0.4rem; }
-      .product-link { font-size:0.7rem; padding:0.25rem 0.65rem; }
-
-      /* Skills */
-      .skills-grid { grid-template-columns:1fr; gap:1rem; }
-      .skill-card { padding:1rem; }
-      .pill { font-size:0.72rem; padding:0.2rem 0.55rem; }
-
-      /* Education */
-      .edu-grid { grid-template-columns:1fr; gap:1rem; margin-bottom:1.5rem; }
-      .edu-card { padding:1.25rem; }
-      .certs-grid { grid-template-columns:1fr; gap:0.6rem; }
-
-      /* Publications & Awards */
-      .pub-card { flex-direction:column; gap:0.75rem; padding:1rem; }
-      .awards-grid { grid-template-columns:1fr; gap:0.75rem; }
-
-      /* Contact */
-      .contact-grid { grid-template-columns:1fr; gap:0.75rem; }
-      .contact-card { padding:1rem; }
-      .contact-sub { font-size:0.88rem; }
-
-      /* Footer */
-      .footer-inner { flex-direction:column; align-items:center; text-align:center; gap:0.5rem; }
+    #contact .contact-box {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start;
     }
-
-    /* Small phones */
-    @media(max-width:380px){
-      #hero h1 { font-size:1.35rem; }
-      .hero-role { font-size:0.78rem; }
-      .hero-stats { gap:0.4rem; }
-      .stat-card { padding:0.5rem 0.4rem; }
-      .stat-card .num { font-size:1.1rem; }
-      .stat-card .lbl { font-size:0.55rem; }
+    .contact-lede { color: var(--text-2); font-size: 1.05rem; margin-top: 14px; max-width: 440px; }
+    .contact-list { display: grid; gap: 4px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 10px;
+      text-decoration: none; transition: background 0.15s;
     }
-
-    /* ── THEME TOGGLE BUTTON ── */
-    .theme-toggle {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 999px;
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 1.05rem; flex-shrink: 0;
-      transition: background 0.2s, transform 0.2s;
-      margin-left: 0.75rem;
+    a.contact-item:hover { background: var(--accent-soft); }
+    .contact-item .ci {
+      width: 38px; height: 38px; border-radius: 9px; background: var(--accent-soft); color: var(--accent);
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .theme-toggle:hover { background: rgba(255,255,255,0.18); transform: scale(1.1) rotate(15deg); }
-    .icon-moon { display:none; }
-    html[data-theme="dark"] .icon-sun  { display:none; }
-    html[data-theme="dark"] .icon-moon { display:inline; }
+    .contact-item .k { font-size: 0.8rem; color: var(--text-3); }
+    .contact-item .v { font-size: 0.96rem; font-weight: 500; overflow-wrap: anywhere; }
 
-    /* ── SMOOTH THEME TRANSITION ── */
-    body, section, nav, footer,
-    .showcase-card, .tl-card, .skill-card, .cert-card,
-    .pub-card, .award-card, .product-link, .tl-tag,
-    .cp-mappls, .cp-tvs, .cp-alice,
-    .pill-indigo, .pill-blue, .pill-green, .pill-amber,
-    .sc-icon, .ci-violet, .ci-blue, .ci-green, .sk-icon,
-    .sk-indigo, .sk-blue, .sk-green, .sk-amber,
-    .hero-quote, .hero-intro-line, .hero-intro-text, .currently-row, .currently-pill,
-    .hero-summary, #hero h1, .stat-card, .btn-outline, .hero-socials a,
-    .philosophy-label, .philosophy-title, .phil-card, .phil-title, .phil-desc,
-    .nav-logo span, nav ul a,
-    #contact, .contact-sub, .contact-card, .cc-icon,
-    .footer-inner p, .footer-links a {
-      transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+    footer { border-top: 1px solid var(--line); padding: 28px 0; }
+    .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: var(--text-3); }
+    .foot a { text-decoration: none; }
+    .foot a:hover { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr 220px; gap: 40px; }
+      h1 { font-size: 2.6rem; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .job, .skill-row { grid-template-columns: 1fr; gap: 12px; }
+      .two-col, #contact .contact-box { grid-template-columns: 1fr; gap: 40px; }
     }
-
-    /* ── DARK MODE ── */
-    html[data-theme="dark"] {
-      --bg:     #0f0e1a;
-      --light:  #1a1828;
-      --text:   #e2e8f0;
-      --muted:  #8b98b1;
-      --border: #2d2b45;
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      section { padding: 64px 0; }
+      #hero { padding: 48px 0 56px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-photo { width: 168px; order: -1; border-radius: 50%; aspect-ratio: 1; }
+      .hero-photo img { object-position: center 18%; }
+      h1 { font-size: 2.2rem; }
+      .hero-summary { font-size: 1.02rem; }
+      .metrics { grid-template-columns: 1fr 1fr; margin-top: 48px; }
+      .metric { padding: 22px 16px; }
+      .metric:nth-child(3) { border-left: none; }
+      .metric:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .metric-num { font-size: 1.6rem; }
+      h2 { font-size: 1.6rem; }
     }
-
-    /* Showcase section */
-    html[data-theme="dark"] #showcase {
-      background: linear-gradient(135deg,#14112a 0%,#0f0e1a 50%,#0c1430 100%);
+    @media (max-width: 480px) {
+      .wrap { padding: 0 16px; }
     }
-    html[data-theme="dark"] .showcase-card { background:#1a1828; border-color:#2d2b45; }
-    html[data-theme="dark"] .sc-icon.blue  { background:rgba(59,130,246,0.15); }
-    html[data-theme="dark"] .sc-icon.green { background:rgba(16,185,129,0.15); }
-    html[data-theme="dark"] .sc-icon.amber { background:rgba(245,158,11,0.15); }
-    html[data-theme="dark"] .sc-label      { color:#8b98b1; }
-
-    /* Experience */
-    html[data-theme="dark"] #experience { background:#0f0e1a; }
-    html[data-theme="dark"] .tl-card    { background:#1a1828; border-color:#2d2b45; }
-    html[data-theme="dark"] .tl-dot     { border-color:#1a1828; }
-    html[data-theme="dark"] .cp-mappls  { background:rgba(99,102,241,0.2); color:#a5b4fc; }
-    html[data-theme="dark"] .cp-tvs     { background:rgba(16,185,129,0.2); color:#6ee7b7; }
-    html[data-theme="dark"] .cp-alice   { background:rgba(245,158,11,0.2);  color:#fcd34d; }
-    html[data-theme="dark"] .tl-tag     { background:rgba(99,102,241,0.12); border-color:rgba(99,102,241,0.28); color:#a5b4fc; }
-    html[data-theme="dark"] .product-link { background:#1a1828; }
-
-    /* Skills */
-    html[data-theme="dark"] #skills {
-      background:linear-gradient(135deg,#14112a,#0f0e1a,#0c1430);
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
     }
-    html[data-theme="dark"] .skill-card  { background:#1a1828; border-color:#2d2b45; }
-    html[data-theme="dark"] .sk-indigo  { background:rgba(99,102,241,0.2); }
-    html[data-theme="dark"] .sk-blue    { background:rgba(59,130,246,0.2); }
-    html[data-theme="dark"] .sk-green   { background:rgba(16,185,129,0.2); }
-    html[data-theme="dark"] .sk-amber   { background:rgba(245,158,11,0.2); }
-    html[data-theme="dark"] .pill-indigo { background:rgba(99,102,241,0.18); color:#a5b4fc; border-color:rgba(99,102,241,0.3); }
-    html[data-theme="dark"] .pill-blue   { background:rgba(59,130,246,0.18); color:#93c5fd; border-color:rgba(59,130,246,0.3); }
-    html[data-theme="dark"] .pill-green  { background:rgba(16,185,129,0.18); color:#6ee7b7; border-color:rgba(16,185,129,0.3); }
-    html[data-theme="dark"] .pill-amber  { background:rgba(245,158,11,0.18); color:#fcd34d; border-color:rgba(245,158,11,0.3); }
-
-    /* Education */
-    html[data-theme="dark"] #education     { background:#0f0e1a; }
-    html[data-theme="dark"] .edu-card.card1 { border:1px solid rgba(165,180,252,0.35); box-shadow:0 0 0 1px rgba(165,180,252,0.1); }
-    html[data-theme="dark"] .edu-card.card2 { border:1px solid rgba(103,232,249,0.35); box-shadow:0 0 0 1px rgba(103,232,249,0.1); }
-    html[data-theme="dark"] .cert-card     { background:#1a1828; border-color:#2d2b45; }
-    html[data-theme="dark"] .cert-card h5  { color:#e2e8f0; }
-    html[data-theme="dark"] .certs-heading { color:#8b98b1; }
-    html[data-theme="dark"] .ci-violet     { background:rgba(139,92,246,0.2); }
-    html[data-theme="dark"] .ci-blue       { background:rgba(59,130,246,0.2); }
-    html[data-theme="dark"] .ci-green      { background:rgba(16,185,129,0.2); }
-
-    /* Publications */
-    html[data-theme="dark"] #publications { background:linear-gradient(135deg,#14112a,#0f0e1a); }
-    html[data-theme="dark"] .pub-card     { background:#1a1828; border-color:#2d2b45; }
-    html[data-theme="dark"] .pub-body h4  { color:#e2e8f0; }
-    html[data-theme="dark"] .pub-tag      { background:rgba(99,102,241,0.18); border-color:rgba(99,102,241,0.3); }
-    html[data-theme="dark"] .award-card   { background:#1a1828; border-color:#2d2b45; }
-    html[data-theme="dark"] .award-card h5 { color:#e2e8f0; }
-
-    /* Scrollbar dark */
-    html[data-theme="dark"] ::-webkit-scrollbar-track { background:#1a1828; }
-
-    /* ── READING PROGRESS BAR ── */
-    #progress-bar { position:fixed; top:0; left:0; height:3px; width:0%; z-index:2000; border-radius:0 2px 2px 0; background:linear-gradient(90deg,var(--indigo),var(--violet),var(--cyan),var(--emerald)); transition:width 0.08s linear; }
-
-    /* ── TYPING ANIMATION ── */
-    .typing-text { color:#a5b4fc; }
-    .typing-cursor { display:inline-block; width:2px; height:1em; background:#a5b4fc; margin-left:2px; vertical-align:middle; animation:blink 0.75s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    /* ── PM PHILOSOPHY STRIP ── */
-    #philosophy { background:linear-gradient(180deg, var(--light) 0%, var(--bg) 100%); padding:3.5rem 2rem; }
-    .philosophy-label { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--indigo); margin-bottom:0.6rem; }
-    .philosophy-title { font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:900; color:var(--text); margin-bottom:2rem; }
-    .philosophy-title span { background:linear-gradient(135deg,#4338ca,#7c3aed,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .phil-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
-    @media(max-width:820px){ .phil-grid { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:480px){ .phil-grid { grid-template-columns:1fr; } }
-    .phil-card {
-      background:#fff; border:1px solid rgba(99,102,241,0.12);
-      box-shadow:0 2px 12px rgba(99,102,241,0.06);
-      border-radius:16px; padding:1.5rem 1.25rem; text-align:center;
-      transition:transform 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
-      position:relative; overflow:hidden;
-    }
-    .phil-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(99,102,241,0.07),transparent); opacity:0; transition:opacity 0.3s; }
-    .phil-card:hover { transform:translateY(-6px); border-color:rgba(99,102,241,0.5); }
-    .phil-card:hover::before { opacity:1; }
-    .phil-emoji { font-size:2.2rem; display:block; margin-bottom:0.75rem; }
-    .phil-title { font-size:0.88rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; }
-    .phil-desc  { font-size:0.76rem; color:var(--muted); line-height:1.65; }
-
-    /* ── CAREER HIGHLIGHT BAND ── */
-    #careerband { background:linear-gradient(90deg,#6366f1 0%,#8b5cf6 40%,#3b82f6 100%); padding:1.75rem 2rem; }
-    .cb-inner { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
-    @media(max-width:600px){ .cb-inner { grid-template-columns:repeat(2,1fr); gap:1.25rem; } }
-    .cb-item { text-align:center; color:#fff; padding:0.5rem 0; }
-    .cb-num { font-size:2rem; font-weight:900; line-height:1; }
-    .cb-lbl { font-size:0.7rem; font-weight:600; opacity:0.78; text-transform:uppercase; letter-spacing:0.07em; margin-top:0.3rem; }
-
-    /* ── WAVE DIVIDER ── */
-    .wave { overflow:hidden; line-height:0; margin-bottom:-2px; }
-    .wave svg { display:block; width:100%; }
-
-    /* ── ACHIEVEMENT BADGE ── */
-    .tl-win { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.72rem; font-weight:700; background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(5,150,105,0.08)); border:1px solid rgba(16,185,129,0.35); color:#059669; padding:0.3rem 0.8rem; border-radius:8px; margin-bottom:0.85rem; }
-    html[data-theme="dark"] .tl-win { color:#34d399; border-color:rgba(52,211,153,0.3); background:rgba(16,185,129,0.1); }
-
-    /* ── SKILL PROFICIENCY BARS ── */
-    .skill-bars { margin-top:1rem; display:flex; flex-direction:column; gap:0.55rem; }
-    .sb-row { display:flex; align-items:center; gap:0.7rem; }
-    .sb-name { font-size:0.74rem; font-weight:600; color:var(--text); width:130px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .sb-track { flex:1; height:5px; border-radius:99px; background:var(--border); overflow:hidden; }
-    .sb-fill { height:100%; border-radius:99px; width:0; transition:width 1.4s cubic-bezier(0.4,0,0.2,1); }
-    .sb-fill.fi { background:linear-gradient(90deg,var(--indigo),var(--violet)); }
-    .sb-fill.fb { background:linear-gradient(90deg,var(--blue),var(--cyan)); }
-    .sb-fill.fg { background:linear-gradient(90deg,var(--emerald),#059669); }
-    .sb-fill.fa { background:linear-gradient(90deg,var(--amber),var(--rose)); }
-    .sb-pct { font-size:0.68rem; font-weight:700; color:var(--muted); width:28px; text-align:right; }
-    html[data-theme="dark"] .sb-track { background:#2d2b45; }
-
-    /* ── BACK TO TOP ── */
-    #btt { position:fixed; bottom:1.75rem; right:1.75rem; width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--indigo),var(--violet)); color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.15rem; box-shadow:0 4px 20px rgba(99,102,241,0.45); z-index:900; opacity:0; pointer-events:none; transform:translateY(12px); transition:opacity 0.3s, transform 0.3s, box-shadow 0.3s; }
-    #btt.show { opacity:1; pointer-events:all; transform:translateY(0); }
-    #btt:hover { transform:translateY(-3px) scale(1.08); box-shadow:0 8px 28px rgba(99,102,241,0.6); }
-
-    /* Philosophy dark */
-    html[data-theme="dark"] #philosophy { background:linear-gradient(180deg,#0f0e1a 0%,#14112a 100%); }
-    html[data-theme="dark"] .philosophy-label { color:#a5b4fc; }
-    html[data-theme="dark"] .philosophy-title { color:#fff; }
-    html[data-theme="dark"] .philosophy-title span { background:linear-gradient(135deg,#a5b4fc,#c4b5fd,#93c5fd); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    html[data-theme="dark"] .phil-card  { background:rgba(255,255,255,0.03); border-color:rgba(99,102,241,0.2); box-shadow:none; }
-    html[data-theme="dark"] .phil-title { color:#fff; }
-    html[data-theme="dark"] .phil-desc  { color:rgba(255,255,255,0.48); }
-
-    /* Hero dark */
-    html[data-theme="dark"] #hero { background:linear-gradient(135deg,#0f0e2a 0%,#1a1040 40%,#0d1b3e 100%); }
-    html[data-theme="dark"] .hero-quote { color:#a5b4fc; }
-    html[data-theme="dark"] .hero-intro-line { background:#a5b4fc; }
-    html[data-theme="dark"] .hero-intro-text { color:#8b98b1; }
-    html[data-theme="dark"] #hero h1 { color:#fff; }
-    html[data-theme="dark"] .currently-row { color:#8b98b1; }
-    html[data-theme="dark"] .hero-summary { color:rgba(255,255,255,0.6); }
-    html[data-theme="dark"] .hero-photo-wrap::before { border-top-color:#a5b4fc; border-right-color:rgba(165,180,252,0.2); }
-    html[data-theme="dark"] .hero-photo-wrap::after  { border-bottom-color:#c4b5fd; border-left-color:rgba(196,181,253,0.15); }
-    html[data-theme="dark"] .hero-photo-inner { background:#1e1b4b; }
-    html[data-theme="dark"] .stat-card { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.08); }
-    html[data-theme="dark"] .stat-card .num { color:#a5b4fc; }
-    html[data-theme="dark"] .stat-card .num .stat-num { color:#a5b4fc; }
-    html[data-theme="dark"] .stat-card .num .num-unit { color:#a5b4fc; }
-    html[data-theme="dark"] .stat-card .lbl { color:rgba(255,255,255,0.45); }
-    html[data-theme="dark"] .hero-socials a { border-color:#2d2b45; color:#8b98b1; background:rgba(255,255,255,0.03); }
-    html[data-theme="dark"] .hero-socials a:hover { border-color:#a5b4fc; background:rgba(99,102,241,0.15); color:#a5b4fc; }
-    html[data-theme="dark"] .btn-outline { color:#fff; background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); }
-    html[data-theme="dark"] .btn-outline:hover { background:rgba(255,255,255,0.12); }
-
-    /* Nav dark */
-    html[data-theme="dark"] nav { background:rgba(15,14,42,0.92); border-bottom-color:rgba(99,102,241,0.3); }
-    html[data-theme="dark"] .nav-logo span { color:#fff; }
-    html[data-theme="dark"] nav ul a { color:rgba(255,255,255,0.65); }
-    html[data-theme="dark"] nav ul a:hover { color:#fff; }
-
-    /* Contact dark */
-    html[data-theme="dark"] #contact { background:linear-gradient(135deg,#0f0e2a,#1a1040,#0d1b3e); }
-    html[data-theme="dark"] #contact .sec-title { color:#fff; }
-    html[data-theme="dark"] #contact .sec-label { color:#a5b4fc; }
-    html[data-theme="dark"] .contact-sub  { color:rgba(255,255,255,0.5); }
-    html[data-theme="dark"] .contact-card { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.1); color:#fff; }
-    html[data-theme="dark"] .contact-card:hover { background:rgba(99,102,241,0.15); border-color:rgba(99,102,241,0.4); }
-    html[data-theme="dark"] .cc-icon { background:rgba(99,102,241,0.2); }
-    html[data-theme="dark"] .contact-card h5 { color:rgba(255,255,255,0.4); }
-
-    /* Footer dark */
-    html[data-theme="dark"] footer { background:#0f0e2a; border-top-color:rgba(255,255,255,0.07); }
-    html[data-theme="dark"] .footer-inner p { color:rgba(255,255,255,0.3); }
-    html[data-theme="dark"] .footer-links a { color:rgba(255,255,255,0.3); }
-    html[data-theme="dark"] .footer-links a:hover { color:#a5b4fc; }
   </style>
 </head>
 <body>
-<div id="progress-bar"></div>
-<button id="btt" aria-label="Back to top" title="Back to top">↑</button>
 
-<!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-logo">
-    <div class="dot">JT</div>
-    <span>Jagathishkumar T S</span>
+  <div class="wrap nav-inner">
+    <a href="#hero" class="brand">Jagathishkumar T S</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
   </div>
-  <ul>
-    <li><a href="#showcase">Impact</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#contact" class="nav-cta">Reach Me</a></li>
-  </ul>
-  <button id="themeToggle" class="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle theme">
-    <span class="icon-sun">☀️</span>
-    <span class="icon-moon">🌙</span>
-  </button>
 </nav>
 
 <!-- ══ HERO ══ -->
-<section id="hero">
-  <div class="hero-bg-circles">
-    <span></span><span></span><span></span>
-  </div>
-  <canvas id="particles"></canvas>
-  <div class="hero-inner">
-    <div class="hero-content">
-
-      <!-- Quote greeting -->
-      <p class="hero-quote">"Hello, PM World."</p>
-
-      <!-- Separator line + name -->
-      <div class="hero-intro">
-        <span class="hero-intro-line"></span>
-        <span class="hero-intro-text">I'm Jagathishkumar T S</span>
-      </div>
-
-      <!-- Role as the big headline with typing animation -->
-      <h1><span id="typingText">Product Manager</span><span class="typing-cursor"></span></h1>
-
-      <!-- Currently badge -->
-      <div class="currently-row">
-        <span>CURRENTLY</span>
-        <span class="currently-pill">● at Mappls, Mapmyindia · Bengaluru</span>
-      </div>
-
-      <p class="hero-summary">
-        Results-driven Product Manager with 5+ years driving end-to-end product lifecycles —
-        from strategy and market research to launch and post-release optimization.
-      </p>
-
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="num"><span class="stat-num" data-target="5">0</span><span class="num-unit">SKUs</span></div>
-          <div class="lbl">New SKUs Introduced</div>
-        </div>
-        <div class="stat-card">
-          <div class="num"><span class="num-unit">₹</span><span class="stat-num" data-target="3">0</span><span class="num-unit">Cr</span></div>
-          <div class="lbl">Revenue Generated</div>
-        </div>
-        <div class="stat-card">
-          <div class="num"><span class="stat-num" data-target="7.5">0</span><span class="num-unit">k</span></div>
-          <div class="lbl">Users Acquired</div>
-        </div>
-        <div class="stat-card">
-          <div class="num"><span class="stat-num" data-target="5">0</span><span class="num-unit">Yrs</span></div>
-          <div class="lbl">Years Experience</div>
-        </div>
-      </div>
-
-      <div class="hero-cta">
-        <a href="mailto:jagathishachu@gmail.com" class="btn btn-grad">✉️ &nbsp;Get in Touch</a>
-        <a href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/" target="_blank" class="btn btn-outline">💼 &nbsp;LinkedIn</a>
-      </div>
-
-      <!-- Social icons row -->
-      <div class="hero-socials">
-        <a href="mailto:jagathishachu@gmail.com" title="Email">✉️</a>
-        <a href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/" target="_blank" title="LinkedIn">💼</a>
-        <a href="#contact" title="Contact">📬</a>
-      </div>
-    </div>
-
-    <!-- PHOTO -->
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-ring">
-        <div class="hero-photo-inner">
-          <img src="profile.jpg" alt="Jagathishkumar T S" style="display:block;" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PM PHILOSOPHY ══ -->
-<section id="philosophy">
-  <div class="inner">
-    <div class="philosophy-label">🧠 How I Think</div>
-    <h2 class="philosophy-title">My PM <span>Philosophy</span></h2>
-    <div class="phil-grid">
-      <div class="phil-card reveal delay-1">
-        <span class="phil-emoji">📊</span>
-        <div class="phil-title">Data-Driven Decisions</div>
-        <div class="phil-desc">I let user data, market signals, and KPIs guide every product call — not assumptions or gut feel alone.</div>
-      </div>
-      <div class="phil-card reveal delay-2">
-        <span class="phil-emoji">🎯</span>
-        <div class="phil-title">Outcome over Output</div>
-        <div class="phil-desc">I focus on the impact a feature delivers — revenue, adoption, retention — not just shipping fast.</div>
-      </div>
-      <div class="phil-card reveal delay-3">
-        <span class="phil-emoji">👤</span>
-        <div class="phil-title">User-First Thinking</div>
-        <div class="phil-desc">Every roadmap decision starts with the user problem. I obsess over feedback loops and usability.</div>
-      </div>
-      <div class="phil-card reveal delay-4">
-        <span class="phil-emoji">🤝</span>
-        <div class="phil-title">Cross-Functional Trust</div>
-        <div class="phil-desc">PMs don't build alone. I align engineering, design, sales, and SCM around a single north-star metric.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CAREER BAND ══ -->
-<div id="careerband">
-  <div class="cb-inner">
-    <div class="cb-item reveal delay-1">
-      <div class="cb-num">5+</div>
-      <div class="cb-lbl">Years in Product</div>
-    </div>
-    <div class="cb-item reveal delay-2">
-      <div class="cb-num">₹85 Cr</div>
-      <div class="cb-lbl">Portfolio Managed</div>
-    </div>
-    <div class="cb-item reveal delay-3">
-      <div class="cb-num">18+</div>
-      <div class="cb-lbl">SKUs Owned</div>
-    </div>
-    <div class="cb-item reveal delay-4">
-      <div class="cb-num">4</div>
-      <div class="cb-lbl">Industries Covered</div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ IMPACT SHOWCASE ══ -->
-<section id="showcase">
-  <div class="inner">
-    <div class="sec-label" style="color:var(--indigo);">📊 Impact &amp; Metrics</div>
-    <h2 class="sec-title">Delivering <span>Measurable Results</span></h2>
-    <div class="sec-bar" style="background:linear-gradient(90deg,var(--indigo),var(--violet));"></div>
-
-    <div class="showcase-grid">
-      <div class="showcase-card blue reveal delay-1">
-        <div class="sc-icon blue">🚀</div>
-        <div class="sc-num blue">5 <span style="font-size:1rem;">new</span></div>
-        <div style="font-weight:700; margin-bottom:0.25rem;">SKUs Introduced</div>
-        <div class="sc-label">Introduced 5 new SKUs within an ₹85 Cr Track &amp; Trace portfolio — Thermal Label &amp; Receipt Printers, Barcode Scanners (2D &amp; 1D), and custom Govt. bid products at TVS Electronics.</div>
-      </div>
-      <div class="showcase-card green reveal delay-2">
-        <div class="sc-icon green">💰</div>
-        <div class="sc-num green">₹3 Cr</div>
-        <div style="font-weight:700; margin-bottom:0.25rem;">Revenue Achieved</div>
-        <div class="sc-label">Generated ₹3 Cr incremental revenue from 5 newly introduced SKUs — right product, right time, driven by market intelligence.</div>
-      </div>
-      <div class="showcase-card amber reveal delay-3">
-        <div class="sc-icon amber">📈</div>
-        <div class="sc-num amber">7.5k</div>
-        <div style="font-weight:700; margin-bottom:0.25rem;">Users Acquired</div>
-        <div class="sc-label">Grew user base from 600 to 7,500 at Mapmyindia through feedback loops and market research.</div>
-      </div>
-    </div>
-
-    <!-- Mappls Product Card -->
-    <div class="mappls-card">
-      <img src="https://cdn-public.mappls.com/about-mappls/assets/app/images_v1/Live-Traffic-Intelligence_mobile.png" alt="Mappls App" />
+<header id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <span class="mappls-tag">Current Role</span>
-        <h4>Product Manager · Mappls — Mapmyindia</h4>
-        <p>
-          Leading product strategy and roadmap for <strong style="color:#a5b4fc;">Mappls</strong> — India's premier digital mapping and
-          navigation platform by Mapmyindia. Driving feature development, user acquisition, and cross-functional
-          collaboration to deliver world-class location intelligence solutions for millions of users.
+        <p class="hero-role">Product Manager · Consumer Growth, Maps &amp; Navigation, Android</p>
+        <h1>Jagathishkumar T S</h1>
+        <p class="hero-summary">
+          I scale consumer mobile products for emerging markets. Today I lead Android growth for
+          Mappls, MapmyIndia's maps and navigation app built for India's next billion users —
+          owning MAU, acquisition, re-activation and funnel conversion.
         </p>
+        <div class="hero-cta">
+          <a href="mailto:jagathishachu@gmail.com" class="btn btn-primary">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Get in touch
+          </a>
+          <a href="#experience" class="btn btn-ghost">View experience</a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="live-dot"></span>Product Manager at MapmyIndia (Mappls)</span>
+          <span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Bengaluru, India
+          </span>
+          <a href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21h-4z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="profile-photo.jpeg" alt="Portrait of Jagathishkumar T S" />
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-num">5+ yrs</div><div class="metric-lbl">in product management</div></div>
+      <div class="metric"><div class="metric-num">12x</div><div class="metric-lbl">user base growth, 600 → 7,500</div></div>
+      <div class="metric"><div class="metric-num">₹85 Cr</div><div class="metric-lbl">product portfolio owned</div></div>
+      <div class="metric"><div class="metric-num">₹3 Cr</div><div class="metric-lbl">new revenue from 5 launches</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FOCUS ══ -->
+<section class="alt" id="focus">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">What I do</p>
+      <h2>Where I add the most value</h2>
+    </div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-num">01</div>
+        <h3>Consumer growth</h3>
+        <p>Acquisition and re-activation flywheels, segmented push campaigns, referral programs, and funnel and cohort analysis that turns data into roadmap decisions.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">02</div>
+        <h3>0-to-1 products</h3>
+        <p>Taking technical products from idea to launch — personas, PRDs, API requirements and Jira epics — from EV Smart Routing to field-force automation.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">03</div>
+        <h3>Android at scale</h3>
+        <p>Working with engineering on startup latency, payload size and permission flows so the app performs on entry-tier, memory-constrained devices.</p>
       </div>
     </div>
   </div>
@@ -862,533 +337,252 @@
 
 <!-- ══ EXPERIENCE ══ -->
 <section id="experience">
-  <div class="inner">
-    <div class="sec-label" style="color:var(--indigo);">💼 Career Journey</div>
-    <h2 class="sec-title">Work <span>Experience</span></h2>
-    <div class="sec-bar" style="background:linear-gradient(90deg,var(--indigo),var(--blue));"></div>
-
-    <div class="timeline">
-
-      <!-- Mapmyindia Current -->
-      <div class="tl-item reveal">
-        <div class="tl-dot current"></div>
-        <div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-role">Product Manager – Mappls</span>
-            <span class="tl-date">Dec 2025 – Present</span>
-          </div>
-          <div class="tl-company-row">
-            <span class="company-pill cp-mappls">🗺️ Mapmyindia · Bengaluru</span>
-            <span class="tl-current-badge">● Currently Here</span>
-          </div>
-          <div class="tl-win">🗺️ India's #1 Mapping Platform · Location Intelligence</div>
-          <ul class="tl-bullets">
-            <li>Leading product strategy and roadmap for <strong>Mappls</strong> — India's premier digital mapping platform.</li>
-            <li>Driving user acquisition, feature prioritization, and cross-functional collaboration for location intelligence products.</li>
-            <li>Working at the intersection of maps, mobility, and emerging technology to deliver user-centric solutions.</li>
-          </ul>
-          <div class="tl-tag-row">
-            <span class="tl-tag">Mappls</span><span class="tl-tag">Location Intelligence</span><span class="tl-tag">Product Roadmap</span><span class="tl-tag">Navigation</span>
-          </div>
-          <div class="product-link-row">
-            <a href="https://about.mappls.com/app/" target="_blank" class="product-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Mappls App
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- TVS Electronics -->
-      <div class="tl-item reveal delay-1">
-        <div class="tl-dot past"></div>
-        <div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-role">Assistant Product Manager R&amp;D</span>
-            <span class="tl-date">Sep 2024 – Nov 2025</span>
-          </div>
-          <div class="tl-company-row">
-            <span class="company-pill cp-tvs">⚡ TVS Electronics · Bengaluru</span>
-          </div>
-          <div class="tl-win">🏆 ₹3 Cr Revenue from 5 New SKUs · ₹85 Cr Portfolio Owner</div>
-          <ul class="tl-bullets">
-            <li>Managed an <strong>₹85 Cr Track &amp; Trace product portfolio</strong> spanning Thermal Label Printers, Receipt Printers, Barcode Scanners (2D &amp; 1D), and customized products for Govt. bids — covering <strong>13+ active SKUs</strong>.</li>
-            <li>Introduced <strong>5 new SKUs</strong> within the portfolio, generating <strong>₹3 Cr incremental revenue</strong> through precise market timing and competitive positioning.</li>
-            <li>Expanded the <strong>AIDC portfolio</strong> by launching <strong>industrial-grade printers</strong> (Thermal Label &amp; Receipt) and <strong>2D Barcode Scanners</strong>, strengthening TVS Electronics' presence in the enterprise and logistics segment.</li>
-            <li>Identified market gaps and translated customer feedback into <strong>actionable product requirements and quarterly roadmaps</strong>.</li>
-            <li>Collaborated with SCM and R&amp;D to finalize component selection and <strong>optimize BOM</strong> for cost-effectiveness.</li>
-            <li>Conducted <strong>competitive benchmarking and teardown analysis</strong> to influence feature prioritization and pricing.</li>
-            <li>Created sales enablement content — battle cards, training materials, and technical documentation.</li>
-          </ul>
-          <div class="tl-tag-row">
-            <span class="tl-tag">₹85 Cr Portfolio</span><span class="tl-tag">Track &amp; Trace</span><span class="tl-tag">GTM</span><span class="tl-tag">BOM Optimization</span><span class="tl-tag">Govt. Bids</span>
-          </div>
-          <div class="product-link-row">
-            <a href="https://www.tvselectronics.in/products/mlp-3120" target="_blank" class="product-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              MLP 3120
-            </a>
-            <a href="https://www.tvselectronics.in/products/rp-4230-4-inch-thermal-printer" target="_blank" class="product-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              RP-4230 Thermal Printer
-            </a>
-            <a href="https://www.tvselectronics.in/products/lp-46-dlite" target="_blank" class="product-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              LP 46 D'Lite
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Alice Blue -->
-      <div class="tl-item reveal delay-2">
-        <div class="tl-dot past"></div>
-        <div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-role">Product Manager</span>
-            <span class="tl-date">May 2024 – Aug 2024</span>
-          </div>
-          <div class="tl-company-row">
-            <span class="company-pill cp-alice">📈 Alice Blue · Bengaluru</span>
-          </div>
-          <div class="tl-win">📈 Fintech Domain · Agile Excellence</div>
-          <ul class="tl-bullets">
-            <li>Optimized sprint planning and backlog prioritization, improving <strong>team efficiency and on-time delivery</strong>.</li>
-            <li>Deployed <strong>Google Analytics</strong> to uncover user behavior and app performance, enabling data-driven decisions.</li>
-            <li>Spearheaded <strong>UI/UX enhancements</strong>, elevating customer satisfaction and adoption.</li>
-            <li>Evangelized product strategy by presenting data-backed insights to stakeholders and leadership.</li>
-            <li>Strengthened <strong>cross-functional communication</strong> across design, engineering, and business teams.</li>
-          </ul>
-          <div class="tl-tag-row">
-            <span class="tl-tag">Google Analytics</span><span class="tl-tag">Sprint Planning</span><span class="tl-tag">UI/UX</span><span class="tl-tag">Stakeholder Management</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mapmyindia Previous -->
-      <div class="tl-item reveal delay-3">
-        <div class="tl-dot past"></div>
-        <div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-role">Product Engineer</span>
-            <span class="tl-date">May 2021 – May 2024</span>
-          </div>
-          <div class="tl-company-row">
-            <span class="company-pill cp-mappls">🗺️ Mapmyindia · Bengaluru</span>
-          </div>
-          <div class="tl-win">🚀 User Base 600 → 7,500 · 3 Years of Full-Stack PM Experience</div>
-          <ul class="tl-bullets">
-            <li>Identified holistic problem statements and structured them into <strong>scalable product requirements</strong>.</li>
-            <li>Created quarterly product roadmaps and defined feature-level objectives aligned with company vision.</li>
-            <li>Authored detailed <strong>product specifications, wireframes, and use cases</strong> for clear prioritization.</li>
-            <li>Drove <strong>user acquisition from 600 to 7,500</strong>, leveraging customer feedback and competitive insights.</li>
-            <li>Led product cadences — sprint planning, KPI reviews, release coordination — ensuring transparency.</li>
-            <li>Championed <strong>user-centric design principles</strong>, conducting usability testing to enhance adoption.</li>
-          </ul>
-          <div class="tl-tag-row">
-            <span class="tl-tag">Product Roadmap</span><span class="tl-tag">User Acquisition</span><span class="tl-tag">Wireframing</span><span class="tl-tag">Usability Testing</span>
-          </div>
-          <div class="product-link-row">
-            <a href="https://about.mappls.com/workmate/" target="_blank" class="product-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Mapmyindia Workmate
-            </a>
-          </div>
-        </div>
-      </div>
-
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Experience</p>
+      <h2>Where I've worked</h2>
     </div>
-  </div>
-</section>
 
-<!-- ══ SKILLS ══ -->
-<section id="skills">
-  <div class="inner">
-    <div class="sec-label" style="color:var(--violet);">🛠️ Expertise</div>
-    <h2 class="sec-title">Skills &amp; <span>Capabilities</span></h2>
-    <div class="sec-bar" style="background:linear-gradient(90deg,var(--violet),var(--blue));"></div>
-    <div class="skills-grid reveal">
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="sk-icon sk-indigo">🗂️</div>
-          <span class="sk-label">Product Management</span>
+    <div class="job">
+      <div class="job-side">
+        <div class="date">Dec 2025 – Present</div>
+        <div class="company">MapmyIndia (Mappls)</div>
+        <div class="loc">Bengaluru</div>
+      </div>
+      <div>
+        <h3>Product Manager — Consumer Growth</h3>
+        <p class="job-lede">Own multi-quarter strategy and execution for Mappls Android and iOS consumer growth — MAU, daily visits, engagement and retention across India and neighbouring markets.</p>
+        <ul>
+          <li>Architected <strong>acquisition and re-activation flywheels</strong>, including segmented push campaigns via Firebase Cloud Messaging by city, state, navigation mode and deep-link behaviour.</li>
+          <li>Diagnosed <strong>funnel drop-offs, churn drivers and at-risk cohorts</strong> from Google Analytics and Firebase data, surfacing Android engagement decline and navigation-cancellation hotspots to the CEO, COO and VPs.</li>
+          <li>Designed and analyzed <strong>A/B tests and causal holdback experiments</strong> to validate hypotheses, remove journey friction and lift feature discoverability.</li>
+          <li>Led the <strong>0-to-1 launch of EV Smart Routing</strong> and EV charging-station discovery — personas, PRDs, Jira epics and API requirements for vehicle profiles and nearby chargers.</li>
+          <li>Grew acquisition through a <strong>Campus Ambassador Program with 2,400+ registrations</strong>, powering referral ingress and onboarding.</li>
+        </ul>
+        <details>
+          <summary>
+            <span class="more">Show 7 more</span><span class="less">Show less</span>
+            <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <ul>
+            <li>Expanded coverage into <strong>Bhutan</strong> with region-selection and origin-validation flows; shipped contextual Home/Work recommendations and <strong>Android Auto</strong> contextual shortcuts.</li>
+            <li>Partnered with Android engineering to cut <strong>app startup latency, payload footprint and first-interaction time</strong> on entry-tier devices, and to optimize OS permission flows and API/SDK integrations.</li>
+            <li>Defining next-generation products through PRDs, including <strong>RealView</strong> street-level 360° imagery and the <strong>Workmate AI Platform</strong>, an AI-driven configurable field-operations product.</li>
+            <li>Driving distribution partnerships to embed <strong>Mappls Pin in bank branch locators</strong> (e.g., Axis Bank), opening new acquisition channels.</li>
+            <li>Orchestrate delivery across engineering, data science, UX, user research, legal and product marketing.</li>
+            <li>Validated new markets through user research, including a public transport survey.</li>
+            <li>Use <strong>generative AI and LLM tools (Claude Code)</strong> to build analytics dashboards and working prototypes, shortening requirement-to-concept cycles.</li>
+          </ul>
+        </details>
+        <div class="tags">
+          <span class="tag">Consumer growth</span><span class="tag">Android</span><span class="tag">Experimentation</span><span class="tag">Firebase</span><span class="tag">EV routing</span><span class="tag">Generative AI</span>
         </div>
-        <div class="pills">
-          <span class="pill pill-indigo">Product Lifecycle</span>
-          <span class="pill pill-indigo">Product Strategy</span>
-          <span class="pill pill-indigo">Feature Prioritization</span>
-          <span class="pill pill-indigo">Wireframing</span>
-          <span class="pill pill-indigo">Concept to Launch</span>
-          <span class="pill pill-indigo">User Persona</span>
-          <span class="pill pill-indigo">User Story</span>
-          <span class="pill pill-indigo">Product Operations</span>
-          <span class="pill pill-indigo">Google Analytics</span>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-name">Product Strategy</span><div class="sb-track"><div class="sb-fill fi" data-w="92"></div></div><span class="sb-pct">92%</span></div>
-          <div class="sb-row"><span class="sb-name">Roadmapping</span><div class="sb-track"><div class="sb-fill fi" data-w="90"></div></div><span class="sb-pct">90%</span></div>
-          <div class="sb-row"><span class="sb-name">Wireframing</span><div class="sb-track"><div class="sb-fill fi" data-w="85"></div></div><span class="sb-pct">85%</span></div>
-          <div class="sb-row"><span class="sb-name">User Research</span><div class="sb-track"><div class="sb-fill fi" data-w="88"></div></div><span class="sb-pct">88%</span></div>
+        <div class="links">
+          <a href="https://about.mappls.com/app/" target="_blank" rel="noopener">Mappls app ↗</a>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="sk-icon sk-blue">⚡</div>
-          <span class="sk-label">Agile &amp; Scrum</span>
+    </div>
+
+    <div class="job">
+      <div class="job-side">
+        <div class="date">Sep 2024 – Nov 2025</div>
+        <div class="company">TVS Electronics</div>
+        <div class="loc">Bengaluru</div>
+      </div>
+      <div>
+        <h3>Assistant Product Manager — R&amp;D</h3>
+        <p class="job-lede">Owned an ₹85 Cr Track &amp; Trace portfolio of 13+ active SKUs — thermal label and receipt printers, 1D/2D barcode scanners and customised products for government bids.</p>
+        <ul>
+          <li>Launched <strong>5 new SKUs</strong> from concept to market, delivering <strong>₹3 Cr in incremental revenue</strong> through market-led product selection, competitive positioning and launch timing.</li>
+          <li>Converted customer and market research into <strong>requirements, specifications and roadmap priorities</strong>, balancing performance, connectivity, reliability and cost.</li>
+          <li>Led <strong>competitive benchmarking, teardown analysis and BOM optimisation</strong> with R&amp;D and supply chain; equipped sales with battle cards and go-to-market training.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Hardware products</span><span class="tag">Go-to-market</span><span class="tag">BOM optimisation</span><span class="tag">Government bids</span>
         </div>
-        <div class="pills">
-          <span class="pill pill-blue">Agile Methodologies</span>
-          <span class="pill pill-blue">JIRA</span>
-          <span class="pill pill-blue">Sprint Planning</span>
-          <span class="pill pill-blue">Backlog Management</span>
-          <span class="pill pill-blue">Software Product Management</span>
-          <span class="pill pill-blue">MySQL</span>
-          <span class="pill pill-blue">KPI Reviews</span>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-name">Sprint Planning</span><div class="sb-track"><div class="sb-fill fb" data-w="90"></div></div><span class="sb-pct">90%</span></div>
-          <div class="sb-row"><span class="sb-name">JIRA / Backlog</span><div class="sb-track"><div class="sb-fill fb" data-w="88"></div></div><span class="sb-pct">88%</span></div>
-          <div class="sb-row"><span class="sb-name">KPI Tracking</span><div class="sb-track"><div class="sb-fill fb" data-w="85"></div></div><span class="sb-pct">85%</span></div>
-          <div class="sb-row"><span class="sb-name">MySQL / Data</span><div class="sb-track"><div class="sb-fill fb" data-w="75"></div></div><span class="sb-pct">75%</span></div>
+        <div class="links">
+          <a href="https://www.tvselectronics.in/products/mlp-3120" target="_blank" rel="noopener">MLP 3120 ↗</a>
+          <a href="https://www.tvselectronics.in/products/rp-4230-4-inch-thermal-printer" target="_blank" rel="noopener">RP-4230 thermal printer ↗</a>
+          <a href="https://www.tvselectronics.in/products/lp-46-dlite" target="_blank" rel="noopener">LP 46 D'Lite ↗</a>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="sk-icon sk-green">🔍</div>
-          <span class="sk-label">Market Research &amp; Intelligence</span>
-        </div>
-        <div class="pills">
-          <span class="pill pill-green">Market Research</span>
-          <span class="pill pill-green">Competitive Benchmarking</span>
-          <span class="pill pill-green">Requirements Analysis</span>
-          <span class="pill pill-green">QFD</span>
-          <span class="pill pill-green">CTQ Trees</span>
-          <span class="pill pill-green">Teardown Analysis</span>
-          <span class="pill pill-green">Emerging Technologies</span>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-name">Competitive Intel</span><div class="sb-track"><div class="sb-fill fg" data-w="93"></div></div><span class="sb-pct">93%</span></div>
-          <div class="sb-row"><span class="sb-name">Market Research</span><div class="sb-track"><div class="sb-fill fg" data-w="90"></div></div><span class="sb-pct">90%</span></div>
-          <div class="sb-row"><span class="sb-name">QFD / CTQ</span><div class="sb-track"><div class="sb-fill fg" data-w="82"></div></div><span class="sb-pct">82%</span></div>
-          <div class="sb-row"><span class="sb-name">Teardown Analysis</span><div class="sb-track"><div class="sb-fill fg" data-w="88"></div></div><span class="sb-pct">88%</span></div>
+    </div>
+
+    <div class="job">
+      <div class="job-side">
+        <div class="date">May 2024 – Aug 2024</div>
+        <div class="company">Alice Blue</div>
+        <div class="loc">Bengaluru</div>
+      </div>
+      <div>
+        <h3>Product Manager</h3>
+        <p class="job-lede">Fintech trading app.</p>
+        <ul>
+          <li>Analyzed app usage and user behaviour in <strong>Google Analytics</strong> to pinpoint UI/UX friction, driving data-backed improvements with stakeholders.</li>
+          <li>Streamlined <strong>sprint planning and backlog prioritisation</strong>, improving delivery predictability across product, design and engineering.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Fintech</span><span class="tag">Product analytics</span><span class="tag">Agile delivery</span>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="sk-icon sk-amber">📣</div>
-          <span class="sk-label">Marketing &amp; Customer Engagement</span>
+    </div>
+
+    <div class="job">
+      <div class="job-side">
+        <div class="date">May 2021 – May 2024</div>
+        <div class="company">MapmyIndia</div>
+        <div class="loc">Bengaluru</div>
+      </div>
+      <div>
+        <h3>Associate Product Manager</h3>
+        <p class="job-lede">Mapping and field-force automation products.</p>
+        <ul>
+          <li>Scaled the user base <strong>12x, from 600 to 7,500</strong>, by acting on customer feedback, market research and competitive insights.</li>
+          <li>Built <strong>field-force automation features from 0 to 1</strong>, translating customer problems into requirements, user stories, wireframes and specifications.</li>
+          <li>Ran quarterly roadmap planning, sprint planning, KPI reviews, usability testing and release coordination.</li>
+          <li>Unblocked delivery by aligning engineering and business stakeholders, improving usability and adoption.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">0-to-1</span><span class="tag">Field-force automation</span><span class="tag">User acquisition</span><span class="tag">Usability testing</span>
         </div>
-        <div class="pills">
-          <span class="pill pill-amber">Product Marketing</span>
-          <span class="pill pill-amber">Customer Acquisition</span>
-          <span class="pill pill-amber">Customer Retention</span>
-          <span class="pill pill-amber">Customer Success</span>
-          <span class="pill pill-amber">Business Development</span>
-          <span class="pill pill-amber">GTM Strategy</span>
-          <span class="pill pill-amber">Sales Enablement</span>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-name">GTM Strategy</span><div class="sb-track"><div class="sb-fill fa" data-w="91"></div></div><span class="sb-pct">91%</span></div>
-          <div class="sb-row"><span class="sb-name">Sales Enablement</span><div class="sb-track"><div class="sb-fill fa" data-w="87"></div></div><span class="sb-pct">87%</span></div>
-          <div class="sb-row"><span class="sb-name">Customer Success</span><div class="sb-track"><div class="sb-fill fa" data-w="84"></div></div><span class="sb-pct">84%</span></div>
-          <div class="sb-row"><span class="sb-name">Biz Development</span><div class="sb-track"><div class="sb-fill fa" data-w="80"></div></div><span class="sb-pct">80%</span></div>
+        <div class="links">
+          <a href="https://about.mappls.com/workmate/" target="_blank" rel="noopener">MapmyIndia Workmate ↗</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ EDUCATION & CERTS ══ -->
+<!-- ══ SKILLS ══ -->
+<section class="alt" id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Skills</p>
+      <h2>Toolkit</h2>
+    </div>
+    <div class="skill-row">
+      <h3>Product management</h3>
+      <p>Product strategy, first-principles thinking, multi-quarter roadmaps, 0-to-1 launches, product discovery, PRD/BRD, user stories, prioritisation, go-to-market</p>
+    </div>
+    <div class="skill-row">
+      <h3>Growth</h3>
+      <p>User acquisition, re-activation, retention, engagement, funnel and cohort analysis, A/B testing, holdback experiments, growth flywheels, onboarding conversion, push notifications, referral programs, MAU/DAU metrics</p>
+    </div>
+    <div class="skill-row">
+      <h3>Technical</h3>
+      <p>Android, mobile app architecture, app startup and client-server latency, payload optimization, performance on low-end Android devices, OS permissions, API/SDK integrations, deep links, Android Auto</p>
+    </div>
+    <div class="skill-row">
+      <h3>Data &amp; AI</h3>
+      <p>Google Analytics, Firebase, Firebase Cloud Messaging, MySQL, generative AI, LLMs, Claude Code, AI-assisted prototyping</p>
+    </div>
+    <div class="skill-row">
+      <h3>Tools &amp; methods</h3>
+      <p>Jira, Figma, Microsoft Project, VS Code, Agile, Scrum</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION, CERTIFICATIONS, AWARDS ══ -->
 <section id="education">
-  <div class="inner">
-    <div class="sec-label" style="color:var(--blue);">🎓 Background</div>
-    <h2 class="sec-title">Education &amp; <span>Certifications</span></h2>
-    <div class="sec-bar" style="background:linear-gradient(90deg,var(--blue),var(--cyan));"></div>
-
-    <div class="edu-grid reveal">
-      <div class="edu-card card1">
-        <div class="edu-deg">M.E. · Aug 2018 – May 2020</div>
-        <div class="edu-field">Manufacturing System &amp; Management</div>
-        <div class="edu-uni">CEG Anna University, Chennai</div>
-        <div class="edu-meta">
-          <span>Anna University</span>
-          <span class="edu-gpa">GPA 8.0/10</span>
-        </div>
-      </div>
-      <div class="edu-card card2">
-        <div class="edu-deg">B.Tech · Aug 2014 – May 2018</div>
-        <div class="edu-field">Mechanical Engineering</div>
-        <div class="edu-uni">SRM Institute of Science &amp; Technology, Chennai</div>
-        <div class="edu-meta">
-          <span>SRM IST</span>
-          <span class="edu-gpa">GPA 8.31/10</span>
-        </div>
-      </div>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Background</p>
+      <h2>Education &amp; credentials</h2>
     </div>
-
-    <div class="certs-heading">🏅 Certifications</div>
-    <div class="certs-grid reveal">
-      <div class="cert-card">
-        <div class="cert-icon ci-violet">🤖</div>
-        <div>
-          <h5>AI Micro-Certification</h5>
-          <p>Product School · Aug 2025</p>
+    <div class="two-col">
+      <div>
+        <div class="stack">
+          <div class="sub-head">Education</div>
+          <div class="list-item">
+            <h4>M.E., Manufacturing Systems and Management</h4>
+            <p>College of Engineering, Guindy, Anna University</p>
+            <div class="meta">2018 – 2020 · CGPA 8.0/10</div>
+          </div>
+          <div class="list-item">
+            <h4>B.Tech, Mechanical Engineering</h4>
+            <p>SRM Institute of Science and Technology</p>
+            <div class="meta">2014 – 2018 · CGPA 8.31/10</div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="sub-head">Patent &amp; awards</div>
+          <div class="list-item">
+            <h4>A System for Additive Manufacturing by IoT Based FDM</h4>
+            <p>Indian Patent Application No. 202241068279</p>
+            <div class="meta">Mar 2024</div>
+          </div>
+          <div class="list-item">
+            <h4>Best Student Volunteer</h4>
+            <p>SAE India Southern Section</p>
+            <div class="meta">2019</div>
+          </div>
+          <div class="list-item">
+            <h4>Best Outgoing Student</h4>
+            <p>SAE India Foundation</p>
+            <div class="meta">2018</div>
+          </div>
         </div>
       </div>
-      <div class="cert-card">
-        <div class="cert-icon ci-blue">📊</div>
-        <div>
-          <h5>Product Analytics (PAC)</h5>
-          <p>Product School · Aug 2025</p>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon ci-green">🚀</div>
-        <div>
-          <h5>Product Launches (PRLC)</h5>
-          <p>Product School · Aug 2025</p>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon ci-violet">📋</div>
-        <div>
-          <h5>Certification in Product Management</h5>
-          <p>Growth School · Apr 2024</p>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon ci-blue">🎯</div>
-        <div>
-          <h5>Product Management 101</h5>
-          <p>Udemy · Aug 2023</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PUBLICATIONS & AWARDS ══ -->
-<section id="publications">
-  <div class="inner">
-    <div class="sec-label" style="color:var(--violet);">🏆 Recognition</div>
-    <h2 class="sec-title">Publications &amp; <span>Awards</span></h2>
-    <div class="sec-bar" style="background:linear-gradient(90deg,var(--violet),var(--rose));"></div>
-
-    <div class="pub-card reveal">
-      <div class="pub-icon">📄</div>
-      <div class="pub-body">
-        <span class="pub-tag">Patent Application · IPI</span>
-        <h4>A System for Additive Manufacturing by IoT Based FDM</h4>
-        <p>IPI Application No. 202241068279 &nbsp;·&nbsp; March 2024 &nbsp;·&nbsp; Combines IoT with Fused Deposition Modelling for next-gen additive manufacturing systems.</p>
-      </div>
-    </div>
-
-    <div class="awards-grid">
-      <div class="award-card">
-        <div class="award-trophy">🏆</div>
-        <div>
-          <h5>Best Student Volunteer</h5>
-          <p>SAE India Southern Section · Jun 2019</p>
-        </div>
-      </div>
-      <div class="award-card">
-        <div class="award-trophy">🎓</div>
-        <div>
-          <h5>Best Outgoing Student</h5>
-          <p>SAE India Foundation · May 2018</p>
-        </div>
+      <div>
+        <div class="sub-head">Certifications &amp; training</div>
+        <div class="list-item"><h4>AI Micro-Certification</h4><div class="meta">Product School · Aug 2025</div></div>
+        <div class="list-item"><h4>Product Analytics Micro-Certification</h4><div class="meta">Product School · Aug 2025</div></div>
+        <div class="list-item"><h4>Product Launches Micro-Certification</h4><div class="meta">Product School · Aug 2025</div></div>
+        <div class="list-item"><h4>Microsoft Project 2013 for Project Managers</h4><div class="meta">InfoCareer · Aug 2025</div></div>
+        <div class="list-item"><h4>Quality Function Deployment (QFD) Workshop</h4><div class="meta">Quality Hub India · Feb 2025</div></div>
+        <div class="list-item"><h4>Product Management</h4><div class="meta">Growth School · Apr 2024</div></div>
+        <div class="list-item"><h4>Product Management 101</h4><div class="meta">Udemy · Aug 2023</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="inner">
-    <div class="sec-label">👋 Let's Connect</div>
-    <h2 class="sec-title">Get in <span>Touch</span></h2>
-    <div class="sec-bar"></div>
-    <p class="contact-sub">
-      Have an interesting problem to solve or a product idea to discuss?
-      Feel free to reach out — always happy to connect.
-    </p>
-    <div class="contact-grid reveal">
-      <a href="mailto:jagathishachu@gmail.com" class="contact-card">
-        <div class="cc-icon">✉️</div>
-        <div><h5>Email</h5><p>jagathishachu@gmail.com</p></div>
+<section class="alt" id="contact">
+  <div class="wrap contact-box">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Let's talk</h2>
+      <p class="contact-lede">Open to conversations about consumer growth, maps and mobility, and building products for emerging markets.</p>
+    </div>
+    <div class="contact-list">
+      <a class="contact-item" href="mailto:jagathishachu@gmail.com">
+        <span class="ci"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <span><span class="k">Email</span><br><span class="v">jagathishachu@gmail.com</span></span>
       </a>
-      <a href="tel:+917667079611" class="contact-card">
-        <div class="cc-icon">📞</div>
-        <div><h5>Phone</h5><p>+91 76670 79611</p></div>
+      <a class="contact-item" href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/" target="_blank" rel="noopener">
+        <span class="ci"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21h-4z"/></svg></span>
+        <span><span class="k">LinkedIn</span><br><span class="v">jagathish-kumar-t-s</span></span>
       </a>
-      <a href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/" target="_blank" class="contact-card">
-        <div class="cc-icon">💼</div>
-        <div><h5>LinkedIn</h5><p>View Profile</p></div>
+      <a class="contact-item" href="tel:+917667079611">
+        <span class="ci"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+        <span><span class="k">Phone</span><br><span class="v">+91 76670 79611</span></span>
       </a>
-      <div class="contact-card" style="cursor:default;">
-        <div class="cc-icon">📍</div>
-        <div><h5>Location</h5><p>Bengaluru, India</p></div>
-      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-inner">
-    <p>© 2026 Jagathishkumar T S · Product Manager · Bengaluru, India</p>
-    <div class="footer-links">
-      <a href="mailto:jagathishachu@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/">LinkedIn</a>
-    </div>
+  <div class="wrap foot">
+    <span>© 2026 Jagathishkumar T S · Bengaluru, India</span>
+    <span><a href="mailto:jagathishachu@gmail.com">Email</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/jagathish-kumar-t-s-426b66124/" target="_blank" rel="noopener">LinkedIn</a></span>
   </div>
 </footer>
 
 <script>
-  /* ── PARTICLES ── */
-  (function(){
-    var canvas = document.getElementById('particles');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var particles = [];
-    function resize(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-    for (var i = 0; i < 55; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 2 + 0.5,
-        dx: (Math.random() - 0.5) * 0.4,
-        dy: -(Math.random() * 0.5 + 0.2),
-        alpha: Math.random() * 0.5 + 0.1
-      });
-    }
-    function draw(){
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function(p){
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(165,180,252,' + p.alpha + ')';
-        ctx.fill();
-        p.x += p.dx; p.y += p.dy;
-        if (p.y < -5) { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
-
-  /* ── SCROLL REVEAL ── */
-  (function(){
-    var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    els.forEach(function(el){ io.observe(el); });
-  })();
-
-  /* ── COUNTER ANIMATION ── */
-  (function(){
-    var counters = document.querySelectorAll('.stat-num');
-    var io2 = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (!e.isIntersecting) return;
-        var el = e.target;
-        var target = parseFloat(el.getAttribute('data-target'));
-        var isFloat = target % 1 !== 0;
-        var duration = 1400;
-        var start = performance.now();
-        function step(now){
-          var p = Math.min((now - start) / duration, 1);
-          var ease = 1 - Math.pow(1 - p, 3);
-          var val = target * ease;
-          el.textContent = isFloat ? val.toFixed(1) : Math.floor(val);
-          if (p < 1) requestAnimationFrame(step);
-          else el.textContent = isFloat ? target.toFixed(1) : target;
-        }
-        requestAnimationFrame(step);
-        io2.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(function(el){ io2.observe(el); });
-  })();
-
-  /* ── READING PROGRESS BAR ── */
-  (function() {
-    const bar = document.getElementById('progress-bar');
-    window.addEventListener('scroll', function() {
-      const scrolled = window.scrollY;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
-    }, { passive: true });
-  })();
-
-  /* ── BACK TO TOP ── */
-  (function() {
-    const btt = document.getElementById('btt');
-    window.addEventListener('scroll', function() {
-      btt.classList.toggle('show', window.scrollY > 400);
-    }, { passive: true });
-    btt.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  })();
-
-  /* ── TYPING ANIMATION ── */
-  (function() {
-    const el = document.getElementById('typingText');
-    if (!el) return;
-    const phrases = ['Product Manager','Strategic Thinker','Problem Solver','Customer Advocate','Growth Driver'];
-    let pi = 0, ci = 0, deleting = false;
-    function tick() {
-      const phrase = phrases[pi];
-      el.textContent = deleting ? phrase.slice(0, ci--) : phrase.slice(0, ci++);
-      if (!deleting && ci > phrase.length) { deleting = true; setTimeout(tick, 1500); return; }
-      if (deleting && ci < 0)  { deleting = false; pi = (pi + 1) % phrases.length; ci = 0; setTimeout(tick, 400); return; }
-      setTimeout(tick, deleting ? 55 : 90);
-    }
-    setTimeout(tick, 1200);
-  })();
-
-  /* ── SKILL PROFICIENCY BARS (animate on reveal) ── */
-  (function() {
-    const bars = document.querySelectorAll('.sb-fill');
-    const io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.style.width = (e.target.dataset.w || 0) + '%';
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    bars.forEach(function(b) { io.observe(b); });
-  })();
-
   /* ── DARK / LIGHT MODE TOGGLE ── */
-  (function() {
-    const html = document.documentElement;
-    const btn  = document.getElementById('themeToggle');
-
-    // Load saved preference, fall back to system preference
-    const saved     = localStorage.getItem('portfolio-theme');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial   = saved || (systemDark ? 'dark' : 'light');
-    html.setAttribute('data-theme', initial);
-
-    btn.addEventListener('click', function() {
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  (function () {
+    var html = document.documentElement;
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
-      localStorage.setItem('portfolio-theme', next);
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
     });
-
-    // Also listen for OS-level changes (if no saved preference)
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      if (!localStorage.getItem('portfolio-theme')) {
-        html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-      }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+      var saved = null;
+      try { saved = localStorage.getItem('portfolio-theme'); } catch (err) {}
+      if (!saved) html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
     });
   })();
 </script>
